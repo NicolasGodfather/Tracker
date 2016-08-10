@@ -1,0 +1,15 @@
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.pvt.app.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+   </plugin>
+   
+   mvn install:install-file -Dfile= mysql-connector-java-5.1.39-bin.jar -DgroupId=mysql -DartifactId=mysql-connector-java -Dversion=5.1.39 -Dpackaging=jar -DgeneratePom=true
