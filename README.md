@@ -5,10 +5,11 @@
 Задание:
 
 Подготовить простой таск трекер. В системе следующие сущности:
-User (2 роли – Developer и Manager)
+User (2 роли – Developer и Manager) + Tester
 Project
 Task
 Comment
+(Tester)
 
 Manager может:
 

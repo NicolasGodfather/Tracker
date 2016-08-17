@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Realization types users
+ * Realization
  *
  * @author Nicolas Asinovich.
  */
-public enum UserType {
-    DEVELOPER,
-    MANAGER,
-    TESTER;
+public enum ModelType {
+    PROJECT,
+    TASK,
+    COMMENT;
 
-    public static List<UserType> list() {
+    List<ModelType> list() {
         return Arrays.asList(values());
     }
 }
