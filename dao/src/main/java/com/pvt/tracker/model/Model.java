@@ -15,9 +15,6 @@ public class Model extends AbstractModel{
 
     private static final long serialVersionUID = 23454567L;
 
-    /*@Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;*/
     private String title;
     private UserType userType;          //developer
     private List<ModelType> modelTypes; //comment

@@ -14,7 +14,6 @@ public abstract class AbstractModel implements Serializable {
 
     public int id;
     public String name;
-    public String skype;
     public UserType userType;
     public Timestamp createdAt;
     public Timestamp updatedAt;
