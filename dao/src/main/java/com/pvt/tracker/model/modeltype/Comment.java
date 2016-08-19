@@ -1,11 +1,11 @@
 package com.pvt.tracker.model.modeltype;
 
 /**
- * Realization
+ * Realization class comment
  *
  * @author Nicolas Asinovich.
  */
-public class Comment extends AbstractModel {
+public class Comment extends Task {
 
     private static final long serialVersionUID = 16176899L;
 

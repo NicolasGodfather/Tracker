@@ -9,4 +9,6 @@ public class Analyst extends AbstractUser {
 
     private static final long serialVersionUID = 22366887L;
 
+    public Analyst () {
+    }
 }

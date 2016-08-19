@@ -1,15 +1,13 @@
-package com.pvt.tracker.dao;
+package com.pvt.tracker.services;
 
 import java.util.List;
 
 /**
- * Realization abstract layer DAO
- *
+ * Realization
  *
  * @author Nicolas Asinovich.
  */
-public interface AbstractDao<T>{
-
+public interface AbstractService<T> {
     void create(T t);
     void update(T t);
     void deleteById(int id);

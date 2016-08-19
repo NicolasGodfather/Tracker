@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Realization AbstractUser, it can be
+ *      ADMIN,
+ *      ANALYST,
  *      DEVELOPER,
  *      MANAGER,
  *      TESTER;
@@ -75,5 +77,10 @@ public abstract class AbstractUser extends AbstractEntity {
 
     public void setModelTypes (List<ModelType> modelTypes) {
         this.modelTypes = modelTypes;
+    }
+
+    @Override
+    public String toString () {
+        return super.toString();
     }
 }

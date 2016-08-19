@@ -1,7 +1,7 @@
 package com.pvt.tracker.model.modeltype;
 
 /**
- * Realization
+ * Realization class comment
  *
  * @author Nicolas Asinovich.
  */

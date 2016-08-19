@@ -1,8 +1,8 @@
 package com.pvt.tracker.model.factory;
 
 import com.pvt.tracker.model.enums.ModelType;
-import com.pvt.tracker.model.modeltype.Comment;
 import com.pvt.tracker.model.modeltype.AbstractModel;
+import com.pvt.tracker.model.modeltype.Comment;
 import com.pvt.tracker.model.modeltype.Project;
 import com.pvt.tracker.model.modeltype.Task;
 

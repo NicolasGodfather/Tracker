@@ -1,5 +1,7 @@
 package com.pvt.tracker.model.usertype;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Realization Analyst Developer
  *

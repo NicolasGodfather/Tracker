@@ -12,7 +12,6 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-
 public abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 23454567L;
@@ -73,5 +72,16 @@ public abstract class AbstractEntity implements Serializable {
 
     public void setModelTypes (List<ModelType> modelTypes) {
         this.modelTypes = modelTypes;
+    }
+
+    @Override
+    public String toString () {
+        return "AbstractEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userType=" + userType +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 }

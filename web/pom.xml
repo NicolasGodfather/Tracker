@@ -20,13 +20,13 @@
   <dependencies>
     <!--dependencies modules-->
     <dependency>
-      <groupId>com.asinovich</groupId>
+      <groupId>com.pvt.tracker</groupId>
       <artifactId>services</artifactId>
       <version>1.0.0</version>
       <type>jar</type>
     </dependency>
     <dependency>
-      <groupId>com.asinovich</groupId>
+      <groupId>com.pvt.tracker</groupId>
       <artifactId>dao</artifactId>
       <version>1.0.0</version>
       <type>jar</type>

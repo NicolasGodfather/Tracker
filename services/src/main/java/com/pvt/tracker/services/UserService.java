@@ -1,4 +1,4 @@
-package com.pvt.tracker.dao;
+package com.pvt.tracker.services;
 
 import com.pvt.tracker.model.usertype.AbstractUser;
 
@@ -7,6 +7,6 @@ import com.pvt.tracker.model.usertype.AbstractUser;
  *
  * @author Nicolas Asinovich.
  */
-public interface UserDao extends AbstractDao<AbstractUser> {
+public interface UserService extends AbstractService<AbstractUser> {
 
 }
