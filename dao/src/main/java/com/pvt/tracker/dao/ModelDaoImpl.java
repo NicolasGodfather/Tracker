@@ -1,6 +1,8 @@
 package com.pvt.tracker.dao;
 
-import com.pvt.tracker.model.ModelType;
+import com.pvt.tracker.model.enums.ModelType;
+
+import java.util.List;
 
 /**
  * Realization by layer dao
@@ -9,19 +11,23 @@ import com.pvt.tracker.model.ModelType;
  */
 public class ModelDaoImpl implements ModelDao {
 
-    public void create () {
+    public void create (ModelType modelType) {
 
     }
 
-    public void update () {
+    public void update (ModelType modelType) {
 
     }
 
-    public void delete () {
+    public void deleteById (ModelType modelType) {
 
     }
 
     public ModelType get () {
+        return null;
+    }
+
+    public List<ModelType> getAll () {
         return null;
     }
 }

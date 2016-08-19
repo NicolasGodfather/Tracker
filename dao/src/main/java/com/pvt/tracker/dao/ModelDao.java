@@ -1,6 +1,6 @@
 package com.pvt.tracker.dao;
 
-import com.pvt.tracker.model.ModelType;
+import com.pvt.tracker.model.enums.ModelType;
 
 /**
  * Realization

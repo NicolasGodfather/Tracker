@@ -1,4 +1,4 @@
-package com.pvt.tracker.model;
+package com.pvt.tracker.model.enums;
 
 import java.util.Arrays;
 import java.util.List;

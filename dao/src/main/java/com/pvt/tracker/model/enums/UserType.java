@@ -1,4 +1,4 @@
-package com.pvt.tracker.model;
+package com.pvt.tracker.model.enums;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +9,8 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 public enum UserType {
+    ADMIN,
+    ANALYST,
     DEVELOPER,
     MANAGER,
     TESTER;
