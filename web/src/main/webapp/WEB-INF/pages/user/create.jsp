@@ -44,7 +44,7 @@
     	</div>
   	</div>
   	<div class="form-group">
-    	<label for="role" class="col-sm-2 control-label"><m:message message="user.attr.role"/></label>
+    	<label for="type" class="col-sm-2 control-label"><m:message message="user.attr.role"/></label>
     	<div class="col-sm-4">
     		<c:forEach items="${rolesList}" var="role">
 				<div class="checkbox">

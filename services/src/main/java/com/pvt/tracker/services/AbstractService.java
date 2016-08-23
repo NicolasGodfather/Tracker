@@ -11,6 +11,6 @@ public interface AbstractService<T> {
     void create(T t);
     void update(T t);
     void deleteById(int id);
-    T get(int id);
+    T getById(int id);
     List<T> getAll();
 }

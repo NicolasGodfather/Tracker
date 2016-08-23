@@ -1,15 +1,13 @@
 package com.pvt.tracker.model;
 
 import com.pvt.tracker.model.enums.ModelType;
-import com.pvt.tracker.model.enums.UserType;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * Realization Abstract AbstractModel App
- *
+ * Realization Abstract Model App.
  * @author Nicolas Asinovich.
  */
 public abstract class AbstractEntity implements Serializable {
@@ -18,12 +16,11 @@ public abstract class AbstractEntity implements Serializable {
 
     private int id;
     private String name;
-    private UserType userType;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-    private List<ModelType> modelTypes;
+    private List<ModelType> modelTypes; // for User, Model, Workflow
 
-    protected AbstractEntity () {
+    AbstractEntity () {
     }
 
     public int getId () {
@@ -40,14 +37,6 @@ public abstract class AbstractEntity implements Serializable {
 
     public void setName (String name) {
         this.name = name;
-    }
-
-    public UserType getUserType () {
-        return userType;
-    }
-
-    public void setUserType (UserType userType) {
-        this.userType = userType;
     }
 
     public Timestamp getCreatedAt () {
@@ -79,9 +68,33 @@ public abstract class AbstractEntity implements Serializable {
         return "AbstractEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", userType=" + userType +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractEntity)) return false;
+
+        AbstractEntity that = (AbstractEntity) o;
+
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
+        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
+        return modelTypes != null ? modelTypes.equals(that.modelTypes) : that.modelTypes == null;
+
+    }
+
+    @Override
+    public int hashCode () {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (modelTypes != null ? modelTypes.hashCode() : 0);
+        return result;
     }
 }

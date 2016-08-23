@@ -60,7 +60,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <url>http://localhost:8080/tracker</url>
+          <url>http://localhost:8082/tracker</url>
           <server>tomcatserver</server>
           <path>/web</path>
           <username>root</username>

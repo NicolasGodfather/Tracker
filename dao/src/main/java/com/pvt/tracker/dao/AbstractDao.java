@@ -3,16 +3,16 @@ package com.pvt.tracker.dao;
 import java.util.List;
 
 /**
- * Realization abstract layer DAO
+ * Realization abstract dao layer
  *
  *
  * @author Nicolas Asinovich.
  */
 public interface AbstractDao<T>{
 
-    void create(T t);
+    int create(T t);
     void update(T t);
     void deleteById(int id);
-    T get(int id);
+    T getById(int id);
     List<T> getAll();
 }

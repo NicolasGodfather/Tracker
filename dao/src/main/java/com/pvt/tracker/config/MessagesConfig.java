@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Класс для загрузки файлов с локализованными сообщениями. Сейчас доступны два языка:
- * русский, английский. Английский язык загружается по-умолчанию.
  * Class for load files with localization message. Access 2 language:
- * rus, eng. Eng language load default.
+ * rus, eng. English language load default.
  */
 public class MessagesConfig {
 

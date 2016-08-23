@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Realization Workflow class
  *
+ * Field extend: id, name, createdAt, updatedAt
  * @author Nicolas Asinovich.
  */
 public class Workflow extends AbstractEntity {
@@ -14,7 +15,6 @@ public class Workflow extends AbstractEntity {
     private static final long serialVersionUID = 66363895L;
 
     private List<StatusType> statusTypes;
-//    private List<ModelType> modelTypes; //for list tasks
 
     public List<StatusType> getStatusTypes () {
         return statusTypes;

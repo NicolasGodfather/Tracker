@@ -15,12 +15,12 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-2">
             <div class="page-header">
                 <h1>
-                    Task Tracker
-  						<span class="pull-right">
-  							<h4>
-  								<a href="${pageContext.request.contextPath}/messages/change?lang=RU">ru</a> | <a href="${pageContext.request.contextPath}/messages/change?lang=EN">en</a>
-  							</h4>
-  						</span>
+                Task Tracker
+                <span class="pull-right">
+                    <h4>
+                        <a href="${pageContext.request.contextPath}/messages/change?lang=RU">ru</a> | <a href="${pageContext.request.contextPath}/messages/change?lang=EN">en</a>
+                    </h4>
+                </span>
                 </h1>
             </div>
             <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/login/auth" method="POST">

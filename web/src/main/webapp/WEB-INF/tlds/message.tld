@@ -5,7 +5,7 @@
 	<shortname>message</shortname>
 	<tag>
     	<name>message</name>
-    	<tagclass>com.pvt.tracker.tags.MessagesTag</tagclass>
+    	<tagclass>com.pvt.tracker.MessagesTag</tagclass>
     	<attribute>
       		<name>message</name>
       		<required>true</required>
