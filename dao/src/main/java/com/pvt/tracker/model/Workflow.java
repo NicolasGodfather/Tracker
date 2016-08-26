@@ -2,6 +2,7 @@ package com.pvt.tracker.model;
 
 import com.pvt.tracker.model.enums.StatusType;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
@@ -10,8 +11,8 @@ import java.util.List;
  * Field extend: id, name, createdAt, updatedAt
  * @author Nicolas Asinovich.
  */
+@Entity
 public class Workflow extends AbstractEntity {
-
     private static final long serialVersionUID = 66363895L;
 
     private List<StatusType> statusTypes;

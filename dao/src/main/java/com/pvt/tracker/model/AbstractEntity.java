@@ -2,6 +2,7 @@ package com.pvt.tracker.model;
 
 import com.pvt.tracker.model.enums.ModelType;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
@@ -10,17 +11,22 @@ import java.util.List;
  * Realization Abstract Model App.
  * @author Nicolas Asinovich.
  */
+@MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
-
     private static final long serialVersionUID = 23454567L;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PK")
     private int id;
+    @Column
     private String name;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+    @Column(name = "created_in")
+    private Timestamp createdIn;
+    @Column(name = "updated_in")
+    private Timestamp updatedIn;
+    @Column
     private List<ModelType> modelTypes; // for User, Model, Workflow
 
-    AbstractEntity () {
+    public AbstractEntity () {
     }
 
     public int getId () {
@@ -39,20 +45,20 @@ public abstract class AbstractEntity implements Serializable {
         this.name = name;
     }
 
-    public Timestamp getCreatedAt () {
-        return createdAt;
+    public Timestamp getCreatedIn () {
+        return createdIn;
     }
 
-    public void setCreatedAt (Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedIn (Timestamp createdIn) {
+        this.createdIn = createdIn;
     }
 
-    public Timestamp getUpdatedAt () {
-        return updatedAt;
+    public Timestamp getUpdatedIn () {
+        return updatedIn;
     }
 
-    public void setUpdatedAt (Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdatedIn (Timestamp updatedIn) {
+        this.updatedIn = updatedIn;
     }
 
     public List<ModelType> getModelTypes () {
@@ -68,33 +74,10 @@ public abstract class AbstractEntity implements Serializable {
         return "AbstractEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
+                ", createdAt=" + createdIn +
+                ", updatedAt=" + updatedIn +
                 '}';
     }
 
-    @Override
-    public boolean equals (Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AbstractEntity)) return false;
 
-        AbstractEntity that = (AbstractEntity) o;
-
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
-        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
-        return modelTypes != null ? modelTypes.equals(that.modelTypes) : that.modelTypes == null;
-
-    }
-
-    @Override
-    public int hashCode () {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
-        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
-        result = 31 * result + (modelTypes != null ? modelTypes.hashCode() : 0);
-        return result;
-    }
 }

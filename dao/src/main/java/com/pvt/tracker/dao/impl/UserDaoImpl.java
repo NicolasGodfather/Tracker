@@ -42,8 +42,8 @@ public class UserDaoImpl implements UserDao {
     public int create (User user) {
         try {
         Session session = this.sessionFactory.getCurrentSession();
-        user.setCreatedAt(new Timestamp(new Date().getTime()));
-        user.setUpdatedAt(new Timestamp(new Date().getTime()));
+        user.setCreatedIn(new Timestamp(new Date().getTime()));
+        user.setUpdatedIn(new Timestamp(new Date().getTime()));
         session.save(user);
 //            UserType type = UserType.valueOf("A")
         logger.info("User successfully created. User details: " + user);
@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDao {
     public void update (User user) {
         try {
             Session session = this.sessionFactory.getCurrentSession();
-            user.setUpdatedAt(new Timestamp(new Date().getTime()));
+            user.setUpdatedIn(new Timestamp(new Date().getTime()));
             session.update(user);
             logger.info("User successfully updated. User details: " + user);
         } catch (Exception e) {

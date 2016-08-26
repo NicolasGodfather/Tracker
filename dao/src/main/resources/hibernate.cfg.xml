@@ -5,13 +5,15 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tracker_db</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.pool_size">10</property>
+    <property name="hibernate.connection.isolation">2</property>
     <property name="show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">create</property>
-    <mapping resource="AbstractEntity.hbm.xml"/>
+
+    <mapping resource="com.pvt.tracker.model.User"/>
   </session-factory>
 </hibernate-configuration>

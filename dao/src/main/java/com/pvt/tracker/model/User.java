@@ -2,6 +2,7 @@ package com.pvt.tracker.model;
 
 import com.pvt.tracker.model.enums.UserType;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -10,17 +11,28 @@ import java.util.List;
  * Field extend: id, name, createdAt, updatedAt
  * @author Nicolas Asinovich.
  */
+@Entity
+@Table(name = "user", catalog = "abstract_entity")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "user_type")
+@DiscriminatorValue(value = "U")
 public class User extends AbstractEntity {
-
     private static final long serialVersionUID = 234542567L;
-
+    @Column
     private String surname;
+    @Column
     private String login;
+    @Column
     private String password;
+    @Column
     private String email;
+    @Column
     private String skype;
+    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
+    @Enumerated(EnumType.STRING)
     private UserType userType;
-
+    @Column(name = "user_types")
+    @Enumerated(EnumType.STRING)
     private List<UserType> userTypes;
 
     public User () {
