@@ -47,8 +47,8 @@
     			<td><label class="label label-success">${task.assignee.firstName} ${task.assignee.lastName}</label></td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.status"/></th>
-    			<td><label class="label label-warning">${task.status.name}</label></td>
+    			<th><m:message message="task.page.statusType"/></th>
+    			<td><label class="label label-warning">${task.statusType.name}</label></td>
     		</tr>
     		<tr>
     			<th><m:message message="task.page.progress"/></th>

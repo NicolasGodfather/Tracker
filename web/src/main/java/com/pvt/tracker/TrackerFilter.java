@@ -1,7 +1,7 @@
 package com.pvt.tracker;
 
 import com.pvt.tracker.config.MessagesConfig;
-import com.pvt.tracker.controllers.MainController;
+import com.pvt.tracker.controller.MainController;
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;

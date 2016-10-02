@@ -36,11 +36,11 @@
     	</div>
   	</div>
   	<div class="form-group">
-    	<label for="statusId" class="col-sm-2 control-label"><m:message message="task.page.status"/></label>
+    	<label for="statusId" class="col-sm-2 control-label"><m:message message="task.page.statusType"/></label>
     	<div class="col-sm-4">
     		<select class="form-control" id="statusId" name="statusId">
-  				<c:forEach items="${category.workflow.statuses}" var="status">
-  					<option value="${status.id}">${status.name}</option>
+  				<c:forEach items="${category.workflow.statuses}" var="statusType">
+  					<option value="${statusType.id}">${statusType.name}</option>
   				</c:forEach>
 			</select>
     	</div>
