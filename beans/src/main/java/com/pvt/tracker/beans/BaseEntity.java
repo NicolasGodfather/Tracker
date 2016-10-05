@@ -1,9 +1,11 @@
 package com.pvt.tracker.beans;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+
 
 /**
  * Realization Abstract Model App.
@@ -17,6 +19,7 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id")
     private int id;
     @Column(name = "name")
+    @Pattern(regexp="^[A-Z]+[a-z]+$", message="Username must be alphanumeric with no spaces and first capital")
     private String name;
     @Column(name = "created_in")
     private Timestamp createdTime;

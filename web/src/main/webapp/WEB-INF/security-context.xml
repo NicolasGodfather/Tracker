@@ -22,7 +22,7 @@
         <authentication-provider user-service-ref="authService"/>
     </authentication-manager>
 
-    <beans:bean id="authService" class="by.it.auth.AuthenticationService"/>
+    <beans:bean id="authService" class="com.pvt.tracker.auth"/>
 
 </beans:beans>
 

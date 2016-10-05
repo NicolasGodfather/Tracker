@@ -4,6 +4,8 @@ import com.pvt.tracker.dao.IDao;
 import com.pvt.tracker.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,8 +16,9 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Service
+@Transactional (propagation = Propagation.REQUIRED)
 public class BaseService<T> implements IService<T> {
-
+    @Autowired
     private IDao<T> baseDao;
 
     public BaseService () {
@@ -40,15 +43,7 @@ public class BaseService<T> implements IService<T> {
 
     @Override
     public T getById (Serializable id) {
-        return null;
-    }
-
-//    public T getById (Serializable id) {
-//        return baseDao.get(id);
-//    }
-
-    public T getById (Class<T> clazz, Serializable id) {
-        return baseDao.get(clazz, id);
+        return baseDao.get(id);
     }
 
     public List<T> getAll () {

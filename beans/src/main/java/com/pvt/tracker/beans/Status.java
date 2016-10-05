@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "statuses", catalog = "base_entity")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue (value = "S")
 public class Status extends BaseEntity {
     private static final long serialVersionUID = 2290690982798064760L;
 

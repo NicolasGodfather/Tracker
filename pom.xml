@@ -78,19 +78,27 @@
   <build>
     <finalName>Tracker</finalName>
     <plugins>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.tomcat.maven</groupId>-->
+        <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+        <!--<version>2.2</version>-->
+        <!--<configuration>-->
+          <!--<url>http://localhost:8080/tracker/</url>-->
+          <!--<server>tomcatserver</server>-->
+          <!--<path>/web</path>-->
+          <!--<username>root</username>-->
+          <!--<password>root</password>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
       <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
         <configuration>
-          <url>http://localhost:8083/tracker</url>
-          <server>tomcatserver</server>
-          <path>/web</path>
-          <username>root</username>
-          <password>root</password>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
-
       <!--<plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>

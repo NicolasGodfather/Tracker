@@ -37,11 +37,18 @@ public class UserService extends BaseService<User> implements IUserService<User>
         return userDao.findUsersByType(userType);
     }
 
-    public void assignType (User user, UserType[] userType) {
-
+    @SuppressWarnings ("unchecked")
+    public void removeType (User user) {
+        userDao.removeType(user);
     }
 
-    public void removeType (User user) {
+    @Override
+    public User findByUserName (String userName) {
+        return (User) userDao.findByUserName(userName);
+    }
 
+    @SuppressWarnings ("unchecked")
+    public void assignType (User user, UserType[] userType) {
+        userDao.assignType(user, userType);
     }
 }

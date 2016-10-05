@@ -12,8 +12,8 @@ CREATE TABLE `users` (
   `surname` varchar(45) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `skype` varchar(20) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `created_in` datetime NOT NULL,
+  `updated_in` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_UNIQUE` (`login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;

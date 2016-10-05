@@ -1,7 +1,6 @@
 package com.pvt.tracker.dao;
 
-import com.pvt.tracker.model.User;
-import com.pvt.tracker.model.enums.UserType;
+import com.pvt.tracker.beans.enums.UserType;
 
 import java.util.List;
 
@@ -10,7 +9,10 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-public interface UserDao extends AbstractDao<User> {
+public interface IUserDao<User> extends IDao<User> {
+
+    User findById(Long id);
+    User findByUserName(String userName);
 
     /**
      * Find a user by login.
@@ -32,14 +34,14 @@ public interface UserDao extends AbstractDao<User> {
      * @param userType user's.
      * @return list user's.
      */
-     List<User> findUsersByType(UserType userType);
+     List<User> findUsersByType(User userType);
 
     /**
      * Assign type user's.
      * @param user obj User.
      * @param userType obj enum UserType.
      */
-    void assignType(User user, UserType userType);
+    void assignType(User user, UserType[] userType);
 
     /**
      * Remove a user's type.

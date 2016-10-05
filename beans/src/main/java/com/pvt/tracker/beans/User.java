@@ -1,9 +1,12 @@
 package com.pvt.tracker.beans;
 
+import com.pvt.tracker.beans.enums.StateType;
 import com.pvt.tracker.beans.enums.UserType;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Realization User, it can be: ADMIN, ANALYST, DEVELOPER, MANAGER, TESTER;
@@ -32,6 +35,21 @@ public class User extends BaseEntity {
     @Column(name = "user_types")
     @OneToMany
     private List<User> userTypes;
+    @Column(name="state", nullable=false)
+    private String state= StateType.ACTIVE.getState();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "USER_USER_PROFILE",
+            joinColumns = { @JoinColumn(name = "USER_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+    public Set<UserProfile> getUserProfiles () {
+        return userProfiles;
+    }
+
+    public void setUserProfiles (Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
 
     public User () {
     }
@@ -82,5 +100,55 @@ public class User extends BaseEntity {
 
     public void setUserTypes (List<User> userTypes) {
         this.userTypes = userTypes;
+    }
+
+    public String getState () {
+        return state;
+    }
+
+    public void setState (String state) {
+        this.state = state;
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (userType != user.userType) return false;
+        if (userTypes != null ? !userTypes.equals(user.userTypes) : user.userTypes != null) return false;
+        return state != null ? state.equals(user.state) : user.state == null;
+
+    }
+
+    @Override
+    public int hashCode () {
+        int result = surname != null ? surname.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (userType != null ? userType.hashCode() : 0);
+        result = 31 * result + (userTypes != null ? userTypes.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString () {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", name='" + super.getName() + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

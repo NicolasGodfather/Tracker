@@ -1,6 +1,6 @@
 package com.pvt.tracker.beans.enums;
 
-public enum State {
+public enum StateType {
 
 	ACTIVE("Active"),
 	INACTIVE("Inactive"),
@@ -9,7 +9,7 @@ public enum State {
 	
 	private String state;
 	
-	private State (final String state){
+	private StateType (final String state){
 		this.state = state;
 	}
 	

@@ -19,11 +19,20 @@
     </properties>
 
     <dependencies>
+        <!--dependencies modules-->
+        <dependency>
+            <groupId>com.pvt.tracker</groupId>
+            <artifactId>beans</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>
+
+        <!--dependencies spring-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
@@ -39,6 +48,12 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.10.1.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -59,25 +74,25 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.10.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
+
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.5.4</version>
         </dependency>
-    </dependencies>
 
+    </dependencies>
     <build>
         <finalName>dao</finalName>
-
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

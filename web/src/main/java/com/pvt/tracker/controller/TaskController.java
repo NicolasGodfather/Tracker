@@ -12,7 +12,7 @@ import java.util.Date;
 
 // * Контроллер для работы с моделями.
 @Controller
-public class ModelController extends MainController {
+public class TaskController extends MainController {
 	@Autowired (required = true)
 	private IUserService userService;
 	@Autowired (required = true)
@@ -21,11 +21,11 @@ public class ModelController extends MainController {
 	private IWorkflowService workflowService;
 
 //	 * Метод для получения начальной страницы со списком всех задач.
-	public void index() {
-		param("tasksView", true);
+//	public void index() {
+//		param("tasksView", true);
 //		param("tasksTree", getTasksTree(modelService.getAll()));
-		forward(pagesLocation + "layout/" + getDefaultLayout());
-	}
+//		forward(pagesLocation + "layout/" + getDefaultLayout());
+//	}
 	
 //	 * Метод для получения информации по запрошенной пользователем задаче (по id).
 //	public void info() {

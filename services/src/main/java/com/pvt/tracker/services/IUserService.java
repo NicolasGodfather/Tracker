@@ -16,4 +16,6 @@ public interface IUserService<T> extends IService<T> {
     List<T> findUsersByType(T tType);
     void assignType(T user, UserType[] userType);
     void removeType (T user);
+    T findByUserName(String userName);
+
 }
