@@ -16,13 +16,14 @@
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="url" value="jdbc:mysql://localhost:3306/tracker"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
-        <property name="initialSize" value="5"/>
-        <property name="maxActive" value="10"/>
+        <!--<property name="initialSize" value="5"/>-->
+        <!--<property name="maxActive" value="10"/>-->
     </bean>
 
     <bean id="sessionFactory"

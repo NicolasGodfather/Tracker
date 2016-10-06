@@ -15,7 +15,7 @@
     <mvc:resources mapping="/resources/**" location="resources"/>
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
-    <context:component-scan base-package="com.pvt.tracker.controller"/>
+    <context:component-scan base-package="com.pvt.tracker"/>
 
     <bean id="tilesConfigurer"
           class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
