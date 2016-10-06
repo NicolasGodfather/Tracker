@@ -32,15 +32,12 @@ public class User extends BaseEntity {
     @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
     @Enumerated(EnumType.STRING)
     private UserType userType;
-    @Column(name = "user_types")
-    @OneToMany
-    private List<User> userTypes;
     @Column(name="state", nullable=false)
     private String state= StateType.ACTIVE.getState();
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "USER_USER_PROFILE",
-            joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+    @JoinTable(name = "user_types",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
     private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 
     public Set<UserProfile> getUserProfiles () {
@@ -94,14 +91,6 @@ public class User extends BaseEntity {
         this.userType = userType;
     }
 
-    public List<User> getUserTypes () {
-        return userTypes;
-    }
-
-    public void setUserTypes (List<User> userTypes) {
-        this.userTypes = userTypes;
-    }
-
     public String getState () {
         return state;
     }
@@ -122,7 +111,6 @@ public class User extends BaseEntity {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (userType != user.userType) return false;
-        if (userTypes != null ? !userTypes.equals(user.userTypes) : user.userTypes != null) return false;
         return state != null ? state.equals(user.state) : user.state == null;
 
     }
@@ -134,7 +122,6 @@ public class User extends BaseEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (userType != null ? userType.hashCode() : 0);
-        result = 31 * result + (userTypes != null ? userTypes.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         return result;
     }

@@ -23,19 +23,18 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-public abstract class BaseDao<PK extends Serializable, T> implements IDao<T> {
-    private final Class<T> persistentClass;
+@Repository
+public abstract class BaseDao<T> implements IDao<T> {
     private static final Logger logger = LoggerFactory.getLogger(BaseDao.class);
-    protected Session getSession (){
-        return this.sessionFactory.getCurrentSession();
-    }
-
-    @Autowired
     private SessionFactory sessionFactory;
 
-    @SuppressWarnings("unchecked")
-    public BaseDao () {
-        this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
+    @Autowired
+    public BaseDao (SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    protected Session getSession (){
+        return this.sessionFactory.getCurrentSession();
     }
 
     public T create (T t) {
@@ -78,15 +77,5 @@ public abstract class BaseDao<PK extends Serializable, T> implements IDao<T> {
         logger.info("Deleted:" + t);
         getSession().delete(t);
     }
-
-    @SuppressWarnings("unchecked")
-    public T getByKey(PK key) {
-        return (T) getSession().get(persistentClass, key);
-    }
-
-    Criteria createEntityCriteria(){
-        return getSession().createCriteria(persistentClass);
-    }
-
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = 23454567L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PK")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
@@ -26,8 +26,7 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "updated_in")
     private Timestamp updatedTime;
     @Column(name = "model_types")
-    @OneToMany
-    @Enumerated(EnumType.STRING)
+    @ManyToMany
     private List<Model> modelTypes; // for User, Model, Workflow
 
     public BaseEntity () {

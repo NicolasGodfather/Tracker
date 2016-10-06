@@ -28,8 +28,6 @@
             <version>1.0.0</version>
         </dependency>
 
-        <!--dependencies spring-->
-
         <!--MySQL-->
         <dependency>
             <groupId>mysql</groupId>

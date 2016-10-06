@@ -27,13 +27,10 @@ public class Model extends BaseEntity {
     private String description;
     @Column(name = "creator")
     @JoinColumn(table = "users", name = "id")
-    @OneToOne
     private User creator;
     @Column(name = "assignee_id")
-    @OneToOne
-    private Integer assigneeId;             //уполномоченный
+    private Integer assigneeId;
     @Column(name = "workflow_id")
-    @OneToOne
     private Integer workflowId;
     @Column(name = "progress")
     private Integer progress;

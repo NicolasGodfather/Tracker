@@ -16,7 +16,7 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Service
-@Transactional (propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED)
 public class ModelService extends BaseService<Model> implements IModelService<Model> {
 
     @Autowired

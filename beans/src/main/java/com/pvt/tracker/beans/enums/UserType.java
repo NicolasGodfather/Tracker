@@ -8,11 +8,11 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 public enum UserType {
+    ADMIN("ADMIN"),
     ANALYST("ANALYST"),
     DEVELOPER("DEVELOPER"),
     MANAGER("MANAGER"),
     TESTER("TESTER"),
-    ADMIN("ADMIN"),
     CTO("CTO"),
     DESIGNER("DESIGNER");
 
