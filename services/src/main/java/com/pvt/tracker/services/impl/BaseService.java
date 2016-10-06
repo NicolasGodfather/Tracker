@@ -15,14 +15,6 @@ public abstract class BaseService<T> implements IService<T> {
 
     private IDao<T> dao;
 
-//    public BaseService () {
-//    }
-//
-//    @Autowired
-//    public BaseService (IDao<T> dao) {
-//        this.dao = dao;
-//    }
-
     public void create (T t) {
         dao.create(t);
     }
