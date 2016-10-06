@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table (name = "users", catalog = "base_entity")
+@Table (name = "users", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type")
 @DiscriminatorValue(value = "U")

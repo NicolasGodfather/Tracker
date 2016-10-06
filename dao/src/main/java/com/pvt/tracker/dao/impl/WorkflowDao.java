@@ -15,7 +15,7 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Repository("workflowDao")
-public class WorkflowDao extends BaseDao<Workflow> implements IWorkflowDao<Workflow> {
+public class WorkflowDao extends BaseDao<Workflow> implements IWorkflowDao {
 
     @Autowired
     public WorkflowDao (SessionFactory sessionFactory) {

@@ -1,6 +1,7 @@
 package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.Status;
+import com.pvt.tracker.beans.Workflow;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-public interface IWorkflowDao<T> extends IDao<T> {
+public interface IWorkflowDao extends IDao<Workflow> {
 
-    List<Status> getStatuses(T t);
+    List<Status> getStatuses(Workflow workflow);
 }

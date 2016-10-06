@@ -4,13 +4,14 @@ import com.pvt.tracker.beans.enums.ModelType;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Realization Model, this class can be: PROJECT, TASK, COMMENT.
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table(name = "models", catalog = "base_entity")
+@Table(name = "models", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue(value = "M")
 public class Model extends BaseEntity {
@@ -20,16 +21,17 @@ public class Model extends BaseEntity {
     @Column(name = "mode_type")
     @Enumerated(EnumType.STRING)
     private ModelType modelType;
-    @Column(name = "statusType")
+    @JoinColumn(name = "id", table = "statuses")
     @OneToOne
     private Status statusType;
     @Column(name = "description")
     private String description;
     @Column(name = "creator")
-    @JoinColumn(table = "users", name = "id")
-    private User creator;
+    @ManyToMany
+    @JoinColumn(name = "id", table = "users")
+    private List<User> creator;
     @Column(name = "assignee_id")
-    private Integer assigneeId;
+    private Integer assigneeId;             //уполномоченный
     @Column(name = "workflow_id")
     private Integer workflowId;
     @Column(name = "progress")
@@ -37,23 +39,10 @@ public class Model extends BaseEntity {
     @Column(name = "deadline")
     private Timestamp deadline;
     @OneToOne
-    @JoinColumn(name = "id", table = "workflows")
+    @JoinColumn(name = "id", table = "workflow")
     private Workflow workflow;
 
     public Model () {
-    }
-
-    public Model (Integer assigneeId, User creator, Timestamp deadline, String description, ModelType modelType, Integer progress, Status statusType, String title, Workflow workflow, Integer workflowId) {
-        this.assigneeId = assigneeId;
-        this.creator = creator;
-        this.deadline = deadline;
-        this.description = description;
-        this.modelType = modelType;
-        this.progress = progress;
-        this.statusType = statusType;
-        this.title = title;
-        this.workflow = workflow;
-        this.workflowId = workflowId;
     }
 
     public String getTitle () {
@@ -89,11 +78,19 @@ public class Model extends BaseEntity {
         this.description = description;
     }
 
-    public User getCreator () {
+    public Workflow getWorkflow () {
+        return workflow;
+    }
+
+    public void setWorkflow (Workflow workflow) {
+        this.workflow = workflow;
+    }
+
+    public List<User> getCreator () {
         return creator;
     }
 
-    public void setCreator (User creator) {
+    public void setCreator (List<User> creator) {
         this.creator = creator;
     }
 

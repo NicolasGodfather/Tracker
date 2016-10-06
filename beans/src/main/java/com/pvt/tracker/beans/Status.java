@@ -16,7 +16,7 @@ import javax.persistence.*;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table(name = "statuses", catalog = "base_entity")
+@Table(name = "statuses", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Status extends BaseEntity {
     private static final long serialVersionUID = 2290690982798064760L;

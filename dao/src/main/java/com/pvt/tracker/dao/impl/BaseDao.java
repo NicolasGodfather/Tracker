@@ -3,7 +3,6 @@ package com.pvt.tracker.dao.impl;
 import com.pvt.tracker.dao.DAOException;
 import com.pvt.tracker.dao.IDao;
 import com.pvt.tracker.beans.BaseEntity;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +21,7 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository
+@Repository()
 public abstract class BaseDao<T> implements IDao<T> {
     private static final Logger logger = LoggerFactory.getLogger(BaseDao.class);
     private SessionFactory sessionFactory;

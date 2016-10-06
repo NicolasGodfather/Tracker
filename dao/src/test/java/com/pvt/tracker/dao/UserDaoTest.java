@@ -33,6 +33,7 @@ public class UserDaoTest {
     @Test
     public void createUser() {
         User nico = new User();
+        nico.setId(0);
         nico.setName("Nikolay");
         nico.setSurname("Asinovich");
         nico.setLogin("Nico");
@@ -47,7 +48,6 @@ public class UserDaoTest {
     }
 
 //    public void updateUser() {
-//
 //    }
 
     @After

@@ -2,6 +2,7 @@ package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.Model;
 import com.pvt.tracker.dao.impl.ModelDao;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 
 /**
  * Realization
@@ -37,4 +40,16 @@ public class ModelDaoTest {
         createdModel = modelDao.get(createdModel.getId());
         assertEquals("User doesn't create", task, createdModel);
     }
+
+    @After
+    public void deleteModel() {
+        List<Model> list = modelDao.getAll();
+        int size = list.size();
+        if (size > 0) {
+            Model createdModel = list.get(0);
+            modelDao.delete(createdModel);
+            assertNotSame(modelDao.getAll().size(), size);
+        }
+    }
+
 }

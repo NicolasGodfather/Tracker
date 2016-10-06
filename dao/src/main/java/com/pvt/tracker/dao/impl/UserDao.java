@@ -4,6 +4,7 @@ import com.pvt.tracker.dao.IUserDao;
 import com.pvt.tracker.beans.User;
 import com.pvt.tracker.beans.enums.UserType;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository("userDao")
-public class UserDao extends BaseDao<User> implements IUserDao<User> {
+@Repository()
+public class UserDao extends BaseDao<User> implements IUserDao {
 
     @Autowired
     public UserDao (SessionFactory sessionFactory) {
@@ -26,6 +27,14 @@ public class UserDao extends BaseDao<User> implements IUserDao<User> {
 
     private Criteria getCriteria() {
         return super.getSession().createCriteria(User.class);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> getAll () {
+        String hql = "from User";
+        Query query = getSession().createQuery(hql);
+        return query.list();
     }
 
     @Override

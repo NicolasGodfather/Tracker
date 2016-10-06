@@ -10,7 +10,7 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table (name = "workflows", catalog = "base_entity")
+@Table (name = "workflow", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue (value = "W")
 public class Workflow extends BaseEntity {
