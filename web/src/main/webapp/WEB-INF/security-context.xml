@@ -4,15 +4,16 @@
              xsi:schemaLocation="http://www.springframework.org/schema/beans
              http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
              http://www.springframework.org/schema/security
-             http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+             http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+    <beans:bean id="authService" class="com.pvt.tracker.controller.AuthenticationService"/>
 
     <http auto-config="true">
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/home" access="permitAll"/>
         <intercept-url pattern="/admin**" access="hasRole('ADMIN')"/>
-        <intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')"/>
-        <form-login login-page="/login"
-                    username-parameter="userName"
+        <form-login login-page="/welcome"
+                    username-parameter="login"
                     password-parameter="password"
                     authentication-failure-url="/access_denied"/>
         <csrf/>
@@ -21,8 +22,5 @@
     <authentication-manager>
         <authentication-provider user-service-ref="authService"/>
     </authentication-manager>
-
-    <beans:bean id="authService" class="com.pvt.tracker.auth"/>
-
 </beans:beans>
 

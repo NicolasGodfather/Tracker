@@ -24,11 +24,11 @@ public class UserService extends BaseService<User> implements IUserService<User>
     private IUserDao userDao;
 
     @SuppressWarnings ("unchecked")
-    public List<User> findUserByLogin (String login) {
-        return userDao.findUserByLogin(login);
+    public User findUserByLogin (String login) {
+        return (User) userDao.findUserByLogin(login);
     }
 
-    public User findUserByLogPass (String login, String password) {
+    public User findUserByLoginAndPassword (String login, String password) {
         return (User) userDao.findUserByLogPass(login, password);
     }
 
@@ -42,7 +42,6 @@ public class UserService extends BaseService<User> implements IUserService<User>
         userDao.removeType(user);
     }
 
-    @Override
     public User findByUserName (String userName) {
         return (User) userDao.findByUserName(userName);
     }

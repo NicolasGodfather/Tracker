@@ -9,17 +9,17 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-public interface IUserDao<User> extends IDao<User> {
+public interface IUserDao<T> extends IDao<T> {
 
-    User findById(Long id);
-    User findByUserName(String userName);
+    T findById(Long id);
+    T findByUserName(String userName);
 
     /**
      * Find a user by login.
      * @param login user's.
      * @return list user's.
      */
-    List<User>findUserByLogin(String login);
+    T findUserByLogin(String login);
 
     /**
      * Find a user by login & password
@@ -27,25 +27,25 @@ public interface IUserDao<User> extends IDao<User> {
      * @param password user's.
      * @return list user's.
      */
-    User findUserByLogPass(String login, String password);
+    T findUserByLogPass(String login, String password);
 
     /**
      * Find a user by type
      * @param userType user's.
      * @return list user's.
      */
-     List<User> findUsersByType(User userType);
+     List<T> findUsersByType(T userType);
 
     /**
      * Assign type user's.
      * @param user obj User.
      * @param userType obj enum UserType.
      */
-    void assignType(User user, UserType[] userType);
+    void assignType(T user, UserType[] userType);
 
     /**
      * Remove a user's type.
      * @param user obj User.
      */
-    void removeType (User user);
+    void removeType (T user);
 }

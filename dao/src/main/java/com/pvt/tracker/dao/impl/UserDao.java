@@ -39,15 +39,15 @@ public class UserDao extends BaseDao<Long, User> implements IUserDao<User> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<User>findUserByLogin(String login) {
-        return getCriteria().add(Restrictions.disjunction().
-                add(Restrictions.or(Restrictions.like("login", login + "%")))).list();
+    public User findUserByLogin(String login) {
+        return (User) getCriteria().add(Restrictions.eq("login", login)).uniqueResult();
     }
 
     @SuppressWarnings("unchecked")
     public User findUserByLogPass(String login, String password) {
         return (User) getCriteria().add(Restrictions.disjunction().
-                add(Restrictions.or(Restrictions.like("login", login + "%"),Restrictions.like("password", password + "%"))));
+                add(Restrictions.or(Restrictions.like("login", login + "%"),
+                        Restrictions.like("password", password + "%"))));
     }
 
     @SuppressWarnings("unchecked")

@@ -11,11 +11,10 @@ import java.util.List;
  */
 public interface IUserService<T> extends IService<T> {
 
-    List<T> findUserByLogin(String login);
-    T findUserByLogPass(String login, String password);
+    T findByUserName(String userName);
+    T findUserByLogin(String login);
+    T findUserByLoginAndPassword (String login, String password);
     List<T> findUsersByType(T tType);
     void assignType(T user, UserType[] userType);
     void removeType (T user);
-    T findByUserName(String userName);
-
 }
