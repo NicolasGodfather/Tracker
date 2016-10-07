@@ -9,14 +9,14 @@
 <jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
 <head>
     <![CDATA[
-    <script src="/assests/js/jquery-1.11.1.min.js" type="text/javascript"><jsp:text/></script>
-    <script src="/assests/js/utils.js" type="text/javascript"><jsp:text/></script>
+    <script src="../resources/js/jquery-1.11.1.min.js" type="text/javascript"><jsp:text/></script>
+    <script src="../resources/js/utils.js" type="text/javascript"><jsp:text/></script>
     ]]>
     <title>Login Page</title>
 </head>
 <body>
 <div style="float: right;">
-    <a href="/person/persons.form?locale=ru" style="padding: 5px">RU</a>
+    <a href="/user/persons.form?locale=ru" style="padding: 5px">RU</a>
     <a href="/person/persons.form?locale=en" style="padding: 5px">EN</a>
 </div>
 <form method="post" class="signin" action="/mvc/j_spring_security_check">

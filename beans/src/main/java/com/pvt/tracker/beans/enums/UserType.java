@@ -8,6 +8,7 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 public enum UserType {
+
     ADMIN("ADMIN"),
     ANALYST("ANALYST"),
     DEVELOPER("DEVELOPER"),
@@ -16,14 +17,10 @@ public enum UserType {
     CTO("CTO"),
     DESIGNER("DESIGNER");
 
-    String type;
+    private String type;
 
-    UserType (String type) {
+    UserType (final String type) {
         this.type = type;
-    }
-
-    public static List<UserType> list() {
-        return Arrays.asList(values());
     }
 
     public String getType () {
@@ -34,12 +31,16 @@ public enum UserType {
         this.type = type;
     }
 
+    public String getName(){
+        return this.name();
+    }
+
     @Override
     public String toString () {
         return this.type;
     }
 
-    public String getName(){
-        return this.name();
+    public static List<UserType> list() {
+        return Arrays.asList(values());
     }
 }

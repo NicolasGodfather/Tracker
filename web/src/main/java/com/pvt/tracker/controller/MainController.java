@@ -30,10 +30,10 @@ public class MainController {
 		model.addAttribute("user", getPrincipal());
 		return "access-denied";
 	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
-		return "login";
-	}
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public String loginPage() {
+//		return "login";
+//	}
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

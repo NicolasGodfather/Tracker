@@ -15,14 +15,22 @@
         <put-attribute name="body" value="/WEB-INF/view/welcome/welcome.jspx"/>
     </definition>
 
-    <definition name="user/main" extends="default">
-        <put-attribute name="title" value="Main page"/>
+    <definition name="users/main" extends="default">
+        <put-attribute name="title" value="Users page"/>
         <put-attribute name="body" value="/WEB-INF/view/user/main.jspx"/>
     </definition>
+    <definition name="users/info" extends="default">
+        <put-attribute name="title" value="Users page"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/info.jspx"/>
+    </definition>
 
-    <definition name="task/main" extends="default">
-        <put-attribute name="title" value="Main page"/>
-        <put-attribute name="body" value="/WEB-INF/view/user/main.jspx"/>
+    <definition name="tasks/main" extends="default">
+        <put-attribute name="title" value="Tasks page"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/main.jspx"/>
+    </definition>
+    <definition name="tasks/info" extends="default">
+        <put-attribute name="title" value="Tasks page"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/info.jspx"/>
     </definition>
 </tiles-definitions>
 

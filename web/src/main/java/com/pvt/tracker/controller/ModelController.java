@@ -5,6 +5,7 @@ import com.pvt.tracker.services.IUserService;
 import com.pvt.tracker.services.IWorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +13,8 @@ import java.util.Date;
 
 // * Контроллер для работы с моделями.
 @Controller
-public class TaskController extends MainController {
+@RequestMapping ("/model")
+public class ModelController extends MainController {
 	@Autowired (required = true)
 	private IUserService userService;
 	@Autowired (required = true)

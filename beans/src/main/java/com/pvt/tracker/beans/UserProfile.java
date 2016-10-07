@@ -37,7 +37,6 @@ public class UserProfile {
         this.type = type;
     }
 
-
     @Override
     public int hashCode() {
         final int prime = 31;

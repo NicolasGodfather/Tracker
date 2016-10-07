@@ -1,11 +1,8 @@
 package com.pvt.tracker.beans;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
-
 
 /**
  * Realization Abstract Model App.
@@ -19,15 +16,12 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id")
     private int id;
     @Column(name = "name")
-    @Pattern(regexp="^[A-Z]+[a-z]+$", message="Username must be alphanumeric with no spaces and first capital")
+//    @Pattern(regexp="^[A-Z]+[a-z]+$", message="Username must be alphanumeric with no spaces and first capital")
     private String name;
     @Column(name = "created_in")
     private Timestamp createdTime;
     @Column(name = "updated_in")
     private Timestamp updatedTime;
-    @Column(name = "model_types")
-    @ManyToMany
-    private List<Model> modelTypes; // for User, Model, Workflow
 
     public BaseEntity () {
     }
@@ -68,14 +62,6 @@ public abstract class BaseEntity implements Serializable {
         return createdTime;
     }
 
-    public List<Model> getModelTypes () {
-        return modelTypes;
-    }
-
-    public void setModelTypes (List<Model> modelTypes) {
-        this.modelTypes = modelTypes;
-    }
-
     @Override
     public String toString () {
         return "BaseEntity{" +
@@ -83,7 +69,6 @@ public abstract class BaseEntity implements Serializable {
                 ", name='" + name + '\'' +
                 ", updatedTime=" + updatedTime +
                 ", createdTime=" + createdTime +
-                ", modelTypes=" + modelTypes +
                 '}';
     }
 }

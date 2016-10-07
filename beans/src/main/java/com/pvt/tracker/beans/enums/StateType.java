@@ -1,5 +1,8 @@
 package com.pvt.tracker.beans.enums;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum StateType {
 
 	ACTIVE("Active"),
@@ -9,7 +12,7 @@ public enum StateType {
 	
 	private String state;
 	
-	private StateType (final String state){
+	StateType (final String state){
 		this.state = state;
 	}
 	
@@ -17,12 +20,16 @@ public enum StateType {
 		return this.state;
 	}
 
+	public String getName(){
+		return this.name();
+	}
+
 	@Override
 	public String toString(){
 		return this.state;
 	}
 
-	public String getName(){
-		return this.name();
+	public static List<StateType> list() {
+		return Arrays.asList(values());
 	}
 }
