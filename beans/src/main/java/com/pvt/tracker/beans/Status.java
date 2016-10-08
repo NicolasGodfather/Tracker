@@ -17,7 +17,7 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table(name = "statuses", catalog = "base_entity")
+@Table(name = "statuses", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Status extends BaseEntity {
 

@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>services</artifactId>
-    <packaging>jar</packaging>
+    <!--<packaging>jar</packaging>-->
     <name>services</name>
     <url>http://maven.apache.org</url>
 
@@ -20,6 +20,12 @@
         <dependency>
             <groupId>com.pvt.tracker</groupId>
             <artifactId>dao</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pvt.tracker</groupId>
+            <artifactId>beans</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

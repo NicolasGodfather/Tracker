@@ -1,19 +1,21 @@
 package com.pvt.tracker.beans;
 
 import com.pvt.tracker.beans.enums.ModelType;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * Realization Model, this class can be: PROJECT, TASK, COMMENT.
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table(name = "models", catalog = "base_entity")
+@Table(name = "models", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "M")
+//@DiscriminatorValue(value = "M")
 public class Model extends BaseEntity {
 
     private static final long serialVersionUID = 23454567L;

@@ -1,8 +1,7 @@
-package com.pvt.tracker.dao.impl;
+package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.Status;
 import com.pvt.tracker.beans.Workflow;
-import com.pvt.tracker.dao.IWorkflowDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository("workflowDao")
+@Repository
 public class WorkflowDao extends BaseDao<Workflow> implements IWorkflowDao {
 
     @Autowired

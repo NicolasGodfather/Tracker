@@ -15,6 +15,7 @@ import java.util.Date;
 @Controller
 @RequestMapping ("/model")
 public class ModelController extends MainController {
+
 	@Autowired (required = true)
 	private IUserService userService;
 	@Autowired (required = true)

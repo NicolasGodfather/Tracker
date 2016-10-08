@@ -1,7 +1,8 @@
-package com.pvt.tracker.dao;
+/*
+package com.pvt.tracker;
 
 import com.pvt.tracker.beans.Model;
-import com.pvt.tracker.dao.impl.ModelDao;
+import com.pvt.tracker.dao.ModelDao;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,15 +18,17 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 
+*/
 /**
  * Realization
  *
  * @author Nicolas Asinovich.
- */
+ *//*
+
 @ContextConfiguration ("/testContext.xml")
 @RunWith (SpringJUnit4ClassRunner.class)
 @TransactionConfiguration (transactionManager = "txManager", defaultRollback = true)
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public class ModelDaoTest {
 
     @Autowired
@@ -53,3 +57,4 @@ public class ModelDaoTest {
     }
 
 }
+*/

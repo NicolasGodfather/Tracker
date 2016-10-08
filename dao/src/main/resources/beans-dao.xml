@@ -2,23 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation=
                "http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                 http://www.springframework.org/schema/context
-                http://www.springframework.org/schema/context/spring-context-3.0.xsd
-                http://www.springframework.org/schema/aop
-                http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+                http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <context:annotation-config/>
     <context:component-scan base-package="com.pvt.tracker.dao"/>
-    <aop:aspectj-autoproxy/>
+    <!--<aop:aspectj-autoproxy/>-->
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <property name="url" value="jdbc:mysql://localhost:3306/tracker"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/tracker?useSSL=false"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
@@ -34,6 +30,11 @@
                 <value>com.pvt.tracker.beans</value>
             </list>
         </property>
+
+        <property name="namingStrategy">
+            <bean class="com.pvt.tracker.utils.CustomNamingStrategy"/>
+        </property>
+
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
@@ -41,7 +42,11 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="connection.isolation">2</prop>
                 <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+
+                <!--<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>-->
+                <!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
+                <!--<prop key="hibernate.cache.use_second_level_cache">true</prop>-->
             </props>
         </property>
     </bean>

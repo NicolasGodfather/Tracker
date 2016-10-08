@@ -1,7 +1,6 @@
-package com.pvt.tracker.dao.impl;
+package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.Model;
-import com.pvt.tracker.dao.IModelDao;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository()
+@Repository
 public class ModelDao extends BaseDao<Model> implements IModelDao {
 
     @Autowired

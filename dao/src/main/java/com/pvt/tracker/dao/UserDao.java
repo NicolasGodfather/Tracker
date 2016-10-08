@@ -1,6 +1,5 @@
-package com.pvt.tracker.dao.impl;
+package com.pvt.tracker.dao;
 
-import com.pvt.tracker.dao.IUserDao;
 import com.pvt.tracker.beans.User;
 import com.pvt.tracker.beans.enums.UserType;
 import org.hibernate.Criteria;
@@ -17,7 +16,7 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository()
+@Repository
 public class UserDao extends BaseDao<User> implements IUserDao {
 
     @Autowired

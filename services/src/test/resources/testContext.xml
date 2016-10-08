@@ -53,9 +53,9 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 
-	<bean id="userDao" class="com.pvt.tracker.dao.UserDao">
-		<constructor-arg ref="sessionFactory"/>
-	</bean>
+	&lt;!&ndash;<bean id="userService" class="com.pvt.tracker.services.impl.UserService">&ndash;&gt;
+		&lt;!&ndash;<constructor-arg ref="sessionFactory"/>&ndash;&gt;
+	&lt;!&ndash;</bean>&ndash;&gt;
 
 	<bean id="modelDao" class="com.pvt.tracker.dao.ModelDao">
 		<constructor-arg ref="sessionFactory"/>

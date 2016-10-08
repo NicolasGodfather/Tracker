@@ -10,9 +10,9 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table (name = "workflow", catalog = "base_entity")
+@Table (name = "workflow", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue (value = "W")
+//@DiscriminatorValue (value = "W")
 public class Workflow extends BaseEntity {
 
     private static final long serialVersionUID = 66363895L;
@@ -21,8 +21,10 @@ public class Workflow extends BaseEntity {
     @OneToMany
     private List<Status> statusTypes;
 
-    @ManyToMany
-    @JoinColumn(name = "id", table = "models")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "workflow_model",
+            joinColumns = { @JoinColumn(name = "workflow_id") },
+            inverseJoinColumns = { @JoinColumn(name = "model_id") })
     private List<Model> models;
 
     public List<Model> getModels () {

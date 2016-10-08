@@ -1,4 +1,4 @@
-package com.pvt.tracker.dao;
+package com.pvt.tracker.dao.exception;
 
 /**
  * Realization exception dao layer

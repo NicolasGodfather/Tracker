@@ -16,8 +16,8 @@
 </head>
 <body>
 <div style="float: right;">
-    <a href="/user/persons.form?locale=ru" style="padding: 5px">RU</a>
-    <a href="/person/persons.form?locale=en" style="padding: 5px">EN</a>
+    <a href="?locale=ru" style="padding: 5px">RU</a>
+    <a href="?locale=en" style="padding: 5px">EN</a>
 </div>
 <form method="post" class="signin" action="/mvc/j_spring_security_check">
     <fieldset>

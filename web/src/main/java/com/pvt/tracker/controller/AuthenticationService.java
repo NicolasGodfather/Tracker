@@ -1,27 +1,23 @@
 package com.pvt.tracker.controller;
 
 import com.pvt.tracker.beans.User;
-import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.StateType;
-import com.pvt.tracker.dao.impl.UserDao;
+import com.pvt.tracker.dao.UserDao;
 import com.pvt.tracker.services.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service("authService")
-@RequestMapping ("/welcome")
 public class AuthenticationService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
@@ -42,10 +38,10 @@ public class AuthenticationService implements UserDetailsService {
 
     private List<GrantedAuthority> getGrantedAuthorities(User user) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (UserProfile userProfile : user.getUserProfiles()) {
-            logger.info("UserProfile : " + userProfile);
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + userProfile.getType()));
-        }
+//        for (UserProfile userProfile : user.getUserProfiles()) {
+//            logger.info("UserProfile : " + userProfile);
+//            authorities.add(new SimpleGrantedAuthority("ROLE_" + userProfile.getType()));
+//        }
         logger.info("authorities :" + authorities);
         return authorities;
     }

@@ -1,7 +1,6 @@
-package com.pvt.tracker.dao.impl;
+package com.pvt.tracker.dao;
 
-import com.pvt.tracker.dao.DAOException;
-import com.pvt.tracker.dao.IDao;
+import com.pvt.tracker.dao.exception.DAOException;
 import com.pvt.tracker.beans.BaseEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,8 +20,9 @@ import java.util.List;
  *
  * @author Nicolas Asinovich.
  */
-@Repository()
-public abstract class BaseDao<T> implements IDao<T> {
+@Repository
+public class BaseDao<T> implements IDao<T> {
+
     private static final Logger logger = LoggerFactory.getLogger(BaseDao.class);
     private SessionFactory sessionFactory;
 
@@ -39,7 +39,7 @@ public abstract class BaseDao<T> implements IDao<T> {
         BaseEntity baseEntity = (BaseEntity) t;
         try {
             baseEntity.getCreatedTime(new Timestamp(new Date().getTime()));
-            getSession().save(t);
+            getSession().saveOrUpdate(t);
             logger.info("Created. Details: " + t);
             return t;
         } catch (Exception e) {

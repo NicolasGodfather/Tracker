@@ -3,6 +3,7 @@ package com.pvt.tracker.beans;
 import com.pvt.tracker.beans.enums.ModelType;
 import com.pvt.tracker.beans.enums.StateType;
 import com.pvt.tracker.beans.enums.UserType;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -16,10 +17,11 @@ import java.util.Set;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table (name = "users", catalog = "base_entity")
+@Table (name = "users", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "user_type")
-@DiscriminatorValue(value = "U")
+//@DiscriminatorColumn(name = "user_type")
+//@DiscriminatorValue(value = "U")
+//@org.hibernate.annotations.Cache (usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends BaseEntity {
 
     private static final long serialVersionUID = 234542567L;
@@ -39,21 +41,19 @@ public class User extends BaseEntity {
     @Column(name="state", nullable=false)
     private String state= StateType.ACTIVE.getState();
 
-    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
-    @Enumerated(EnumType.STRING)
-    private UserType userType;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_user_model",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_model_id")})
-    private List<Model> models;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_user_profile",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
-    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+//    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
+//    @Enumerated(EnumType.STRING)
+//    private UserType userType;
+//
+//    @ManyToMany
+//    @JoinColumn(name = "id", table = "models")
+//    private List<Model> models;
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_user_profile",
+//            joinColumns = { @JoinColumn(name = "user_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
+//    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 
     public User () {
     }
@@ -72,14 +72,6 @@ public class User extends BaseEntity {
 
     public void setLogin (String login) {
         this.login = login;
-    }
-
-    public List<Model> getModels () {
-        return models;
-    }
-
-    public void setModels (List<Model> models) {
-        this.models = models;
     }
 
     public String getPassword () {
@@ -106,49 +98,57 @@ public class User extends BaseEntity {
         this.surname = surname;
     }
 
-    public Set<UserProfile> getUserProfiles () {
-        return userProfiles;
-    }
+//    public List<Model> getModels () {
+//        return models;
+//    }
+//
+//    public void setModels (List<Model> models) {
+//        this.models = models;
+//    }
+//
+//    public Set<UserProfile> getUserProfiles () {
+//        return userProfiles;
+//    }
+//
+//    public void setUserProfiles (Set<UserProfile> userProfiles) {
+//        this.userProfiles = userProfiles;
+//    }
 
-    public void setUserProfiles (Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
-    }
+//    public UserType getUserType () {
+//        return userType;
+//    }
+//
+//    public void setUserType (UserType userType) {
+//        this.userType = userType;
+//    }
 
-    public UserType getUserType () {
-        return userType;
-    }
-
-    public void setUserType (UserType userType) {
-        this.userType = userType;
-    }
-
-    @Override
-    public boolean equals (Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (state != null ? !state.equals(user.state) : user.state != null) return false;
-        if (userType != user.userType) return false;
-        if (models != null ? !models.equals(user.models) : user.models != null) return false;
-        return userProfiles != null ? userProfiles.equals(user.userProfiles) : user.userProfiles == null;
-    }
-
-    @Override
-    public int hashCode () {
-        int result = surname != null ? surname.hashCode() : 0;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + (userType != null ? userType.hashCode() : 0);
-        result = 31 * result + (models != null ? models.hashCode() : 0);
-        result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
-        return result;
-    }
+//    @Override
+//    public boolean equals (Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof User)) return false;
+//        User user = (User) o;
+//        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+//        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+//        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+//        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+//        if (state != null ? !state.equals(user.state) : user.state != null) return false;
+//        if (userType != user.userType) return false;
+//        if (models != null ? !models.equals(user.models) : user.models != null) return false;
+//        return userProfiles != null ? userProfiles.equals(user.userProfiles) : user.userProfiles == null;
+//    }
+//
+//    @Override
+//    public int hashCode () {
+//        int result = surname != null ? surname.hashCode() : 0;
+//        result = 31 * result + (login != null ? login.hashCode() : 0);
+//        result = 31 * result + (password != null ? password.hashCode() : 0);
+//        result = 31 * result + (email != null ? email.hashCode() : 0);
+//        result = 31 * result + (state != null ? state.hashCode() : 0);
+//        result = 31 * result + (userType != null ? userType.hashCode() : 0);
+//        result = 31 * result + (models != null ? models.hashCode() : 0);
+//        result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
+//        return result;
+//    }
 
     @Override
     public String toString () {
@@ -157,10 +157,10 @@ public class User extends BaseEntity {
                 ", surname='" + surname + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", state='" + state + '\'' +
-                ", userType=" + userType +
-                ", models=" + models +
-                ", userProfiles=" + userProfiles +
+//                ", state='" + state + '\'' +
+//                ", userType=" + userType +
+//                ", models=" + models +
+//                ", userProfiles=" + userProfiles +
                 '}';
     }
 }

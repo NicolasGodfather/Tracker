@@ -12,7 +12,7 @@
 
     <definition name="welcome" extends="default">
         <put-attribute name="title" value="Welcome user"/>
-        <put-attribute name="body" value="/WEB-INF/view/welcome/welcome.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/view/welcome/login.jspx"/>
     </definition>
 
     <definition name="users/main" extends="default">

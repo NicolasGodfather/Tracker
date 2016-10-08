@@ -23,7 +23,6 @@ public class UsersController extends MainController {
 	@Autowired
 	private IUserService iUserService;
 //	private UserType[] userType;
-//	private static List<User> users = new ArrayList();
 
 	/**
 	 * Page with all users.
