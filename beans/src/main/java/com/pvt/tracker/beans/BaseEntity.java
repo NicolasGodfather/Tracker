@@ -11,27 +11,32 @@ import java.sql.Timestamp;
  */
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 23454567L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
+
     @Column(name = "name")
     @Pattern (regexp="^[A-Z]+[a-z]+$", message="Username must be alphanumeric with no spaces and first capital")
     private String name;
+
     @Column(name = "created_in")
     private Timestamp createdTime;
+
     @Column(name = "updated_in")
     private Timestamp updatedTime;
 
     public BaseEntity () {
     }
 
-    public int getId () {
+    public Long getId () {
         return id;
     }
 
-    public void setId (int id) {
+    public void setId (Long id) {
         this.id = id;
     }
 

@@ -3,7 +3,6 @@ package com.pvt.tracker.beans;
 import com.pvt.tracker.beans.enums.StatusType;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Realization StatusType, it can be:
@@ -17,7 +16,6 @@ import java.util.List;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table(name = "statuses", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Status extends BaseEntity {
 
@@ -41,9 +39,7 @@ public class Status extends BaseEntity {
         if (!(o instanceof Status)) return false;
 
         Status status = (Status) o;
-
         return statusType == status.statusType;
-
     }
 
     @Override

@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table (name="user_profile", catalog = "tracker")
+//@Table (name="t_user_profile")
 public class UserProfile {
 
     @Id

@@ -1,5 +1,8 @@
 package com.pvt.tracker.controller;
 
+import com.pvt.tracker.beans.User;
+import com.pvt.tracker.services.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -7,8 +10,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 public class MainController {
+
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping (value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
@@ -35,6 +43,17 @@ public class MainController {
 			userName = principal.toString();
 		}
 		return userName;
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void fillModel(ModelMap model) {
+		List<User> list = userService.getAll();
+		model.put("users", list);
+		User user = new User();
+		if (list.size() > 1) {
+			user = list.get(0);
+		}
+		model.put("user", user);
 	}
 
 //	@RequestMapping(value="/logout", method = RequestMethod.GET)

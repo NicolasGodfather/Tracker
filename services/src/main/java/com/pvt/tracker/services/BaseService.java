@@ -1,7 +1,6 @@
-package com.pvt.tracker.services.impl;
+package com.pvt.tracker.services;
 
 import com.pvt.tracker.dao.IDao;
-import com.pvt.tracker.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

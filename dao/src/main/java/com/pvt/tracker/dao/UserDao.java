@@ -9,6 +9,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,5 +65,12 @@ public class UserDao extends BaseDao<User> implements IUserDao {
     }
 
     public void removeType (User user) {
+    }
+
+    @Override
+    public User create (User user) {
+        user.setCreatedTime(new Timestamp(new Date().getTime()));
+        user.setUpdatedTime(new Timestamp(new Date().getTime()));
+        return create(user);
     }
 }

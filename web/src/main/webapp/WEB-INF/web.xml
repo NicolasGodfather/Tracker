@@ -35,6 +35,17 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+  <!--1 session for 1 person -->
+  <listener>
+    <listener-class>
+      org.springframework.security.web.session.HttpSessionEventPublisher
+    </listener-class>
+  </listener>
+
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
 </web-app>
 
 

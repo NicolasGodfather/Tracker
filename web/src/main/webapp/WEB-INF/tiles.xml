@@ -4,15 +4,15 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
     <definition name="default" template="/WEB-INF/view/layouts/default.jspx">
-        <put-attribute name="title" value=""/>
+        <put-attribute name="body" value="/WEB-INF/view/common/body.jspx"/>
+        <put-attribute name="title" value="/WEB-INF/view/common/title.jspx"/>
         <put-attribute name="header" value="/WEB-INF/view/common/header.jspx"/>
-        <put-attribute name="body" value=""/>
         <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
     </definition>
 
     <definition name="welcome" extends="default">
         <put-attribute name="title" value="Welcome user"/>
-        <put-attribute name="body" value="/WEB-INF/view/welcome/login.jspx"/>
+        <put-attribute name="body" value="/index.jsp"/>
     </definition>
 
     <definition name="users/main" extends="default">

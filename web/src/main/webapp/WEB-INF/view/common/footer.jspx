@@ -3,11 +3,16 @@
           xmlns:spring="http://www.springframework.org/tags"
           version="2.0">
     <footer class="newFooter">
-        <div class="footer">
-            <spring:message code="welcome"/>
-        </div>
+        <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <spring:message code="footer"/>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </footer>
-
 </jsp:root>
 
 

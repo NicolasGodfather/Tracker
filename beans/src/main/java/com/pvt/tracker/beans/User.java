@@ -17,11 +17,7 @@ import java.util.Set;
  * @author Nicolas Asinovich.
  */
 @Entity
-@Table (name = "users", catalog = "tracker")
 @Inheritance(strategy = InheritanceType.JOINED)
-//@DiscriminatorColumn(name = "user_type")
-//@DiscriminatorValue(value = "U")
-//@org.hibernate.annotations.Cache (usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends BaseEntity {
 
     private static final long serialVersionUID = 234542567L;
@@ -41,19 +37,27 @@ public class User extends BaseEntity {
     @Column(name="state", nullable=false)
     private String state= StateType.ACTIVE.getState();
 
-//    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
-//    @Enumerated(EnumType.STRING)
-//    private UserType userType;
-//
-//    @ManyToMany
-//    @JoinColumn(name = "id", table = "models")
-//    private List<Model> models;
-//
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "user_user_profile",
-//            joinColumns = { @JoinColumn(name = "user_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
-//    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
+    @ManyToMany
+    @JoinColumn(name = "id")
+    private List<Model> models;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_user_profile",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
+    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+    public Set<UserProfile> getUserProfiles () {
+        return userProfiles;
+    }
+
+    public void setUserProfiles (Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
 
     public User () {
     }
@@ -98,14 +102,14 @@ public class User extends BaseEntity {
         this.surname = surname;
     }
 
-//    public List<Model> getModels () {
-//        return models;
-//    }
-//
-//    public void setModels (List<Model> models) {
-//        this.models = models;
-//    }
-//
+    public List<Model> getModels () {
+        return models;
+    }
+
+    public void setModels (List<Model> models) {
+        this.models = models;
+    }
+
 //    public Set<UserProfile> getUserProfiles () {
 //        return userProfiles;
 //    }
@@ -114,13 +118,13 @@ public class User extends BaseEntity {
 //        this.userProfiles = userProfiles;
 //    }
 
-//    public UserType getUserType () {
-//        return userType;
-//    }
-//
-//    public void setUserType (UserType userType) {
-//        this.userType = userType;
-//    }
+    public UserType getUserType () {
+        return userType;
+    }
+
+    public void setUserType (UserType userType) {
+        this.userType = userType;
+    }
 
 //    @Override
 //    public boolean equals (Object o) {
@@ -149,18 +153,18 @@ public class User extends BaseEntity {
 //        result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
 //        return result;
 //    }
-
-    @Override
-    public String toString () {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", surname='" + surname + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+//
+//    @Override
+//    public String toString () {
+//        return "User{" +
+//                "email='" + email + '\'' +
+//                ", surname='" + surname + '\'' +
+//                ", login='" + login + '\'' +
+//                ", password='" + password + '\'' +
 //                ", state='" + state + '\'' +
 //                ", userType=" + userType +
 //                ", models=" + models +
 //                ", userProfiles=" + userProfiles +
-                '}';
-    }
+//                '}';
+//    }
 }

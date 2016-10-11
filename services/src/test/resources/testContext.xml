@@ -53,7 +53,7 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 
-	&lt;!&ndash;<bean id="userService" class="com.pvt.tracker.services.impl.UserService">&ndash;&gt;
+	&lt;!&ndash;<bean id="userService" class="com.pvt.tracker.services.UserService">&ndash;&gt;
 		&lt;!&ndash;<constructor-arg ref="sessionFactory"/>&ndash;&gt;
 	&lt;!&ndash;</bean>&ndash;&gt;
 

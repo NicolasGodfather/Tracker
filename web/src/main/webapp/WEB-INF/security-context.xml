@@ -6,8 +6,6 @@
              http://www.springframework.org/schema/security
              http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 
-    <beans:bean id="authService" class="com.pvt.tracker.controller.AuthenticationService"/>
-
     <http auto-config="true">
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/home" access="permitAll"/>
@@ -20,7 +18,15 @@
     </http>
 
     <authentication-manager>
-        <authentication-provider user-service-ref="authService"/>
+        <!--<authentication-provider user-service-ref="authService"/>-->
+    </authentication-manager>
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="root" password="root" authorities="ADMIN"/>
+            </user-service>
+        </authentication-provider>
     </authentication-manager>
 </beans:beans>
 

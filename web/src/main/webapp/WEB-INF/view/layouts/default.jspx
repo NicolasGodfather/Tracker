@@ -10,22 +10,26 @@
 <jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
 <head>
     <![CDATA[
-    <script src="../resources/js/jquery-1.11.1.min.js" type="text/javascript"><jsp:text/></script>
-    <script src="../resources/js/utils.js" type="text/javascript"><jsp:text/></script>
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../resources/css/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../../../resources/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../../../resources/css/bootstrap/bootstrap-theme.css" type="text/css">
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>-->
+    <!--<script type="text/javascript" src="../../../resources/js/bootstrap.js"></script>-->
     ]]>
+
     <tiles:insertAttribute  name="title"/>
     <c:if test="${not empty title}">
         <title><spring:message code="${title}"/></title>
     </c:if>
+
 </head>
 <body>
-<div style="float: right;">
-    <a href="?locale=ru" style="padding: 5px">RU</a>
-    <a href="?locale=en" style="padding: 5px">EN</a>
-</div>
+<!--<div style="float: right;">-->
+    <!--<a href="?locale=ru" style="padding: 5px">RU</a>-->
+    <!--<a href="?locale=en" style="padding: 5px">EN</a>-->
+<!--</div>-->
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="body"/>
-<tiles:insertAttribute name="footer"/>
 </body>
+<tiles:insertAttribute name="footer"/>
 </html>

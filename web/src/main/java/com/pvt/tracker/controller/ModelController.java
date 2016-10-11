@@ -2,7 +2,7 @@ package com.pvt.tracker.controller;
 
 import com.pvt.tracker.services.IModelService;
 import com.pvt.tracker.services.IUserService;
-import com.pvt.tracker.services.IWorkflowService;
+//import com.pvt.tracker.services.IWorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +20,8 @@ public class ModelController extends MainController {
 	private IUserService userService;
 	@Autowired (required = true)
 	private IModelService modelService;
-	@Autowired (required = true)
-	private IWorkflowService workflowService;
+//	@Autowired (required = true)
+//	private IWorkflowService workflowService;
 
 //	 * Метод для получения начальной страницы со списком всех задач.
 //	public void index() {

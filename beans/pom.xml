@@ -9,6 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate.version>4.3.8.Final</hibernate.version>
+    </properties>
+
     <artifactId>beans</artifactId>
     <dependencies>
         <!--<dependency>-->

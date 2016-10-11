@@ -1,9 +1,8 @@
-package com.pvt.tracker.services.impl;
+package com.pvt.tracker.services;
 
 import com.pvt.tracker.beans.User;
 import com.pvt.tracker.beans.enums.UserType;
 import com.pvt.tracker.dao.IUserDao;
-import com.pvt.tracker.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
