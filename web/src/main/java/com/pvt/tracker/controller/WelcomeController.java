@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,6 @@ import java.io.IOException;
  * @author Nicolas Asinovich.
  */
 @Controller
-@SessionAttributes ("login")
 @RequestMapping ("/welcome")
 public class WelcomeController {
 
@@ -39,9 +37,9 @@ public class WelcomeController {
                          BindingResult bindingResult, HttpSession session) {
         if (!bindingResult.hasErrors()) {
             userService.findUserByLoginAndPassword(user.getLogin(), user.getPassword());
-            return "redirect:welcome/";
+            return "redirect:userPage/users/main";
         }
-        return "index";
+        return "welcome";
     }
 
     @RequestMapping(value = "/signOut", method = RequestMethod.GET)
@@ -50,24 +48,7 @@ public class WelcomeController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-
-        return "redirect:index";
+        return "redirect:welcome";
     }
 
-//    @RequestMapping (value = "/welcome", method = RequestMethod.GET)
-////    public String welcomePage() {
-////        User user = new User();
-////        user.setLogin("login");
-////        user.setPassword("password");
-////        return "welcome";
-////    }
-//
-////    @RequestMapping (value = "/login-fail", method = RequestMethod.GET)
-////    @RequestWrapper
-////    public String loginFail(ModelAndView model, @RequestParam (value = "login-fail") String error ) {
-////        if ("error".equals(error)) {
-////            model.addObject("error", "Authentication error");
-////        }
-////        return "welcome";
-////    }
 }

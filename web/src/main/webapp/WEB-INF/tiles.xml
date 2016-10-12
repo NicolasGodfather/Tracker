@@ -3,34 +3,56 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="default" template="/WEB-INF/view/layouts/default.jspx">
+
+    <definition name="default" template="/WEB-INF/view/layouts/default2.jsp">
         <put-attribute name="body" value="/WEB-INF/view/common/body.jspx"/>
         <put-attribute name="title" value="/WEB-INF/view/common/title.jspx"/>
         <put-attribute name="header" value="/WEB-INF/view/common/header.jspx"/>
         <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
     </definition>
 
-    <definition name="welcome" extends="default">
+    <definition name="welcome" extends="default" template="/welcome.jsp">
         <put-attribute name="title" value="Welcome user"/>
-        <put-attribute name="body" value="/index.jsp"/>
+        <put-attribute name="body" value="/welcome.jsp"/>
+    </definition>
+    <definition name="access-denied" extends="default">
+        <put-attribute name="title" value="Access denied page"/>
+        <put-attribute name="body" value="/WEB-INF/view/welcome/access-denied.jspx"/>
     </definition>
 
     <definition name="users/main" extends="default">
         <put-attribute name="title" value="Users page"/>
-        <put-attribute name="body" value="/WEB-INF/view/user/main.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/main.jsp"/>
+    </definition>
+    <definition name="users/create" extends="default">
+        <put-attribute name="title" value="Users page"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/create.jsp"/>
+    </definition>
+    <definition name="users/update" extends="default">
+        <put-attribute name="title" value="Users page"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/update.jsp"/>
     </definition>
     <definition name="users/info" extends="default">
         <put-attribute name="title" value="Users page"/>
-        <put-attribute name="body" value="/WEB-INF/view/user/info.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/user.jsp"/>
     </definition>
 
-    <definition name="tasks/main" extends="default">
+    <definition name="models/main" extends="default">
         <put-attribute name="title" value="Tasks page"/>
-        <put-attribute name="body" value="/WEB-INF/view/model/main.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/main.jsp"/>
     </definition>
-    <definition name="tasks/info" extends="default">
+    <definition name="models/create" extends="default">
         <put-attribute name="title" value="Tasks page"/>
-        <put-attribute name="body" value="/WEB-INF/view/model/info.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/create.jsp"/>
     </definition>
+    <definition name="models/update" extends="default">
+        <put-attribute name="title" value="Tasks page"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/update.jsp"/>
+    </definition>
+    <definition name="models/info" extends="default">
+        <put-attribute name="title" value="Tasks page"/>
+        <put-attribute name="body" value="/WEB-INF/view/model/task.jsp"/>
+    </definition>
+
 </tiles-definitions>
 

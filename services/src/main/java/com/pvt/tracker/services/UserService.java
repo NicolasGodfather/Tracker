@@ -19,6 +19,7 @@ import java.util.List;
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class UserService extends BaseService<User> implements IUserService<User> {
+
     @Autowired
     private IUserDao userDao;
 

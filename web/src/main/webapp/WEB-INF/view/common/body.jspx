@@ -5,12 +5,11 @@
 
     <div class="container-fluid">
         <div class="row">
-
             <!-- SIDE MENU -->
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li class='<c:if test="${tasksView || taskCreate || taskInfo || taskUpdate}">active</c:if>'>
-                        <a href="/tasks"><spring:message code="def.side.menu.all.tasks"/></a>
+                        <a href="/models"><spring:message code="def.side.menu.all.tasks"/></a>
                     </li>
                     <!-- <li>
                         <a href="#"><m:message message="def.side.menu.my.tasks"/></a>
@@ -26,16 +25,16 @@
             <!-- MAIN CONTENT -->
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <c:if test="${tasksView}">
-                    <jsp:include page="../task/index.jsp"/>
+                    <jsp:include page="../model/main.jsp"/>
                 </c:if>
                 <c:if test="${taskCreate}">
-                    <jsp:include page="../task/create.jsp"/>
+                    <jsp:include page="../model/create.jsp"/>
                 </c:if>
                 <c:if test="${taskUpdate}">
-                    <jsp:include page="../task/update.jsp"/>
+                    <jsp:include page="../model/update.jsp"/>
                 </c:if>
                 <c:if test="${usersView}">
-                    <jsp:include page="../user/index.jsp"/>
+                    <jsp:include page="../user/main.jsp"/>
                 </c:if>
                 <c:if test="${userCreate}">
                     <jsp:include page="../user/create.jsp"/>
@@ -44,7 +43,6 @@
                     <jsp:include page="../user/update.jsp"/>
                 </c:if>
             </div>
-
         </div>
     </div>
     </body>

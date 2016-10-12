@@ -4,10 +4,10 @@
 
 <jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
 <head>
-	<title>AccessDenied page</title>
+	<title>Access Denied page</title>
 </head>
 <body>
-	Dear <strong>${user}</strong>, You are not authorized to access this page
+	Dear <strong>${user}</strong>, You are not authorized to access this page!
 	<c:url var="logout" value="/logout"/>
 	<a href="${logout}">Logout</a>
 </body>

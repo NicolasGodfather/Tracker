@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="m" uri="/WEB-INF/tlds/message.tld"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">
-    	<label class="label label-primary"><m:message message="user.page.header"/> - ${user.firstName} ${user.lastName}</label>
+    	<label class="label label-primary"><spring:message code="user.page.header"/> - ${user.name} ${user.surname}</label>
     </h3>
   </div>
   <div class="panel-body">
@@ -13,24 +13,20 @@
     <table class="table table-hover">
     	<tbody>
     		<tr>
-    			<th><m:message message="user.attr.login"/></th>
+    			<th><spring:message code="user.attr.login"/></th>
     			<td>${user.login}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="user.attr.firstname"/></th>
-    			<td>${user.firstName}</td>
+    			<th><spring:message code="user.attr.name"/></th>
+    			<td>${user.name}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="user.attr.lastname"/></th>
-    			<td>${user.lastName}</td>
+    			<th><spring:message code="user.attr.surname"/></th>
+    			<td>${user.surname}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="user.attr.email"/></th>
+    			<th><spring:message code="user.attr.email"/></th>
     			<td>${user.email}</td>
-    		</tr>
-    		<tr>
-    			<th><m:message message="user.attr.phone"/></th>
-    			<td>${user.phoneNumber}</td>
     		</tr>
     	</tbody>
     </table>
@@ -39,12 +35,12 @@
     	<table class="table table-hover">
     		<tbody>
     			<tr>
-    				<th><m:message message="user.attr.created"/></th>
-    				<td>${user.createdAt}</td>
+    				<th><spring:message code="user.attr.created"/></th>
+    				<td>${user.createdTime}</td>
     			</tr>
     			<tr>
-    				<th><m:message message="user.attr.updated"/></th>
-    				<td>${user.updatedAt}</td>
+    				<th><spring:message code="user.attr.updated"/></th>
+    				<td>${user.updatedTime}</td>
     			</tr>
     		</tbody>
     	</table>

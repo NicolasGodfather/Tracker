@@ -37,10 +37,6 @@ public class User extends BaseEntity {
     @Column(name="state", nullable=false)
     private String state= StateType.ACTIVE.getState();
 
-    @Column(name = "user_type", columnDefinition = "enum('DELETED', 'PERMANENT', 'NEW', 'CONTRACT')")
-    @Enumerated(EnumType.STRING)
-    private UserType userType;
-
     @ManyToMany
     @JoinColumn(name = "id")
     private List<Model> models;
@@ -50,14 +46,6 @@ public class User extends BaseEntity {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
     private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
-
-    public Set<UserProfile> getUserProfiles () {
-        return userProfiles;
-    }
-
-    public void setUserProfiles (Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
-    }
 
     public User () {
     }
@@ -110,61 +98,12 @@ public class User extends BaseEntity {
         this.models = models;
     }
 
-//    public Set<UserProfile> getUserProfiles () {
-//        return userProfiles;
-//    }
-//
-//    public void setUserProfiles (Set<UserProfile> userProfiles) {
-//        this.userProfiles = userProfiles;
-//    }
-
-    public UserType getUserType () {
-        return userType;
+    public Set<UserProfile> getUserProfiles () {
+        return userProfiles;
     }
 
-    public void setUserType (UserType userType) {
-        this.userType = userType;
+    public void setUserProfiles (Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
     }
 
-//    @Override
-//    public boolean equals (Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof User)) return false;
-//        User user = (User) o;
-//        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-//        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-//        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-//        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-//        if (state != null ? !state.equals(user.state) : user.state != null) return false;
-//        if (userType != user.userType) return false;
-//        if (models != null ? !models.equals(user.models) : user.models != null) return false;
-//        return userProfiles != null ? userProfiles.equals(user.userProfiles) : user.userProfiles == null;
-//    }
-//
-//    @Override
-//    public int hashCode () {
-//        int result = surname != null ? surname.hashCode() : 0;
-//        result = 31 * result + (login != null ? login.hashCode() : 0);
-//        result = 31 * result + (password != null ? password.hashCode() : 0);
-//        result = 31 * result + (email != null ? email.hashCode() : 0);
-//        result = 31 * result + (state != null ? state.hashCode() : 0);
-//        result = 31 * result + (userType != null ? userType.hashCode() : 0);
-//        result = 31 * result + (models != null ? models.hashCode() : 0);
-//        result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
-//        return result;
-//    }
-//
-//    @Override
-//    public String toString () {
-//        return "User{" +
-//                "email='" + email + '\'' +
-//                ", surname='" + surname + '\'' +
-//                ", login='" + login + '\'' +
-//                ", password='" + password + '\'' +
-//                ", state='" + state + '\'' +
-//                ", userType=" + userType +
-//                ", models=" + models +
-//                ", userProfiles=" + userProfiles +
-//                '}';
-//    }
 }

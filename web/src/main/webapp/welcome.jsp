@@ -3,19 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Welcome</title>
-	<%--<script type="text/javascript" src="../../../resources/js/utils.js"><jsp:text/></script>--%>
-	<%--<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>--%>
-	<%--<script type="text/javascript" src="../../../resources/js/bootstrap.js"></script>--%>
-	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="resources/css/dashboard.css" type="text/css">
-	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap-theme.css" type="text/css">
-  </head>
+    <title>Welcome to Tracker</title>
+	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css" type="text/css" media="all" >
+</head>
 <body>
     <div class="container">
 		<div class="row">
@@ -24,19 +17,20 @@
   					<h1>
 						<spring:message code="title"/>
 						<div style="float: right;">
-							<a href="?locale=ru" style="padding: 5px">RU</a> | <a href="?locale=en" style="padding: 5px">EN</a>
+							<a href="?locale=ru" style="padding:5px">RU</a> | <a href="?locale=en" style="padding:5px">EN</a>
 						</div>
   					</h1>
         		</div>
-				<form class="form-horizontal" role="form" action="/login/signIn" method="POST">
+
+				<form class="form-horizontal" role="form" action="/signIn" modelAttribute="user" method="POST">
         			<h3 class="form-signin-heading"><spring:message code="auth.header"/></h3>
-        			
-        			<c:if test="${not empty bad_auth}">
-        				<div class="alert alert-danger" role="alert">
-        					<spring:message code="bad.auth"/>
-        				</div>
-        			</c:if>
-        			
+
+        			<%--<c:if test="${not empty bad_auth}">--%>
+        				<%--<div class="alert alert-danger" role="alert">--%>
+        					<%--<spring:message code="bad.auth"/>--%>
+        				<%--</div>--%>
+        			<%--</c:if>--%>
+
         			<div class="form-group">
         				<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="login"><spring:message code="login"/></label>
         				<div class="col-xs-6 col-sm-6 col-md-6">

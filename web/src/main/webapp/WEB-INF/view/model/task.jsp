@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="m" uri="/WEB-INF/tlds/message.tld"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="panel panel-info">
   <div class="panel-heading">
@@ -13,19 +13,19 @@
     <table class="table table-hover">
     	<tbody>
     		<tr>
-    			<th><m:message message="task.page.title"/></th>
+    			<th><spring:message code="task.page.title"/></th>
     			<td>${task.title}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.category"/></th>
+    			<th><spring:message code="task.page.category"/></th>
     			<td><label class="label label-default">${task.category.name}</label></td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.created.at"/></th>
+    			<th><spring:message code="task.page.created.at"/></th>
     			<td>${task.createdAt}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.updated.at"/></th>
+    			<th><spring:message code="task.page.updated.at"/></th>
     			<td>${task.updatedAt}</td>
     		</tr>
     	</tbody>
@@ -35,23 +35,23 @@
     <table class="table table-hover">
     	<tbody>
     		<tr>
-    			<th><m:message message="task.page.deadline"/></th>
+    			<th><spring:message code="task.page.deadline"/></th>
     			<td>${task.deadline}</td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.creator"/></th>
+    			<th><spring:message code="task.page.creator"/></th>
     			<td><label class="label label-info">${task.creator.firstName} ${task.creator.lastName}</label></td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.assignee"/></th>
+    			<th><spring:message code="task.page.assignee"/></th>
     			<td><label class="label label-success">${task.assignee.firstName} ${task.assignee.lastName}</label></td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.statusType"/></th>
+    			<th><spring:message code="task.page.statusType"/></th>
     			<td><label class="label label-warning">${task.statusType.name}</label></td>
     		</tr>
     		<tr>
-    			<th><m:message message="task.page.progress"/></th>
+    			<th><spring:message code="task.page.progress"/></th>
     			<td>
     				<div class="progress">
   						<div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="${task.progress}" aria-valuemin="0" aria-valuemax="100" style="width: ${task.progress}%;">
@@ -67,7 +67,7 @@
     	<thead>
     		<tr>
     			<th>
-    				<h3 class="panel-title"><label class="label label-primary"><m:message message="task.page.description"/></label></h3>
+    				<h3 class="panel-title"><label class="label label-primary"><spring:message code="task.page.description"/></label></h3>
     			</th>
     		</tr>
     	</thead>
@@ -83,7 +83,7 @@
  <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">
-    	<label class="label label-primary"><m:message message="task.page.comments"/></label>
+    	<label class="label label-primary"><spring:message code="task.page.comments"/></label>
     </h3>
   </div>
   <div class="panel-body">

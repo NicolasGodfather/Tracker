@@ -1,42 +1,37 @@
 package com.pvt.tracker.controller;
 
-import com.pvt.tracker.beans.User;
-import com.pvt.tracker.services.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes ("user")
 public class MainController {
 
-	@Autowired
-	private IUserService userService;
-
 	@RequestMapping (value = { "/", "/home" }, method = RequestMethod.GET)
-	public String homePage(ModelMap model) {
-		model.addAttribute("greeting", "Hello and welcome");
+	public String homePage() {
 		return "welcome";
 	}
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(ModelMap model) {
+
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String userPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
-		return "admin";
+		return "users/main";
 	}
+
 	@RequestMapping(value = "/access_denied", method = RequestMethod.GET)
 	public String accessDeniedPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "access-denied";
 	}
+
 	private String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		if (principal instanceof UserDetails) {
 			userName = ((UserDetails)principal).getUsername();
 		} else {
@@ -44,17 +39,42 @@ public class MainController {
 		}
 		return userName;
 	}
+//	private String getPrincipal(){
+//		UserDetails userDetails = (UserDetails)
+//				SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		return userDetails.getUsername();
+//	}
 
-	@SuppressWarnings("unchecked")
-	protected void fillModel(ModelMap model) {
-		List<User> list = userService.getAll();
-		model.put("users", list);
-		User user = new User();
-		if (list.size() > 1) {
-			user = list.get(0);
-		}
-		model.put("user", user);
-	}
+
+	/*First method on start application*/
+//	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+//	public ModelAndView main(@ModelAttribute ("user") User user) {
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("user", new User());
+//		modelAndView.setViewName("welcome");
+//		return modelAndView;
+//	}
+//
+//	@ModelAttribute("user")
+//	public User createUser() {
+//		return new User();
+//	}
+
+	/*как только на main.jsp подтвердится форма
+    <spring:form method="post"  modelAttribute="userJSP" action="check-user">,
+    то попадем вот сюда
+     */
+//	@RequestMapping(value = "/signIn")
+//	public ModelAndView checkUser(@ModelAttribute("user") User user) {
+//		ModelAndView modelAndView = new ModelAndView();
+//		//имя представления, куда нужно будет перейти
+//		modelAndView.setViewName("users/main");
+//		//записываем в атрибут userJSP (используется на странице *.jsp) объект user
+//		modelAndView.addObject("user", user);
+//		return modelAndView; //после уйдем на представление, указанное чуть выше, если оно будет найдено.
+//	}
+
+
 
 //	@RequestMapping(value="/logout", method = RequestMethod.GET)
 //	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
