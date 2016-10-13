@@ -1,6 +1,7 @@
 package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.User;
+import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 
 import java.util.List;
@@ -34,7 +35,8 @@ public interface IUserDao extends IDao<User> {
      * @param userType user's.
      * @return list user's.
      */
-     List<User> findUsersByType(User userType);
+//     List<User> findUsersByType(User userType);
+     List<User> findUsersByType(UserProfile userType);
 
     /**
      * Assign type user's.

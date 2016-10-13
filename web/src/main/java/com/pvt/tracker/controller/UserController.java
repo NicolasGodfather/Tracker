@@ -1,6 +1,7 @@
 package com.pvt.tracker.controller;
 
 import com.pvt.tracker.beans.User;
+import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 import com.pvt.tracker.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -24,6 +22,7 @@ import java.util.Map;
  * @author Nicolas Asinovich.
  */
 @Controller
+@SessionAttributes ("user")
 @RequestMapping("/userPage")
 public class UserController extends MainController {
 
@@ -31,12 +30,26 @@ public class UserController extends MainController {
 	private IUserService userService;
 	private UserType[] userType;
 
-	@RequestMapping (value = "/users", method = RequestMethod.GET)
+	@RequestMapping (value = "/", method = RequestMethod.GET)
 	public String mainPage(ModelMap model) {
-		fillModel(model);
+		model.addAttribute("usersView", true);
+		model.addAttribute("usersTree", getUsersTree());
 		return "users/main";
 	}
-
+/*First method on start application*/
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public ModelAndView main(@ModelAttribute ("user") User user) {
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("user", new User());
+//		modelAndView.setViewName("users/main");
+//		return modelAndView;
+//	}
+//
+//	public void index() {
+//		param("usersView", true);
+//		param("usersTree", getUsersTree());
+//		forward(pagesLocation + "layout/" + getDefaultLayout());
+//	}
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String userInfo() {
@@ -61,6 +74,10 @@ public class UserController extends MainController {
 		return "redirect:users/main";
 	}
 
+	/**
+	 * Only ADMIN can create some users
+	 * @return admin/main
+	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/delete-user", method = RequestMethod.POST)
 	@Secured("ADMIN")
@@ -74,19 +91,28 @@ public class UserController extends MainController {
 	}
 
 	@RequestMapping(value = "/update-user/{id}", method = RequestMethod.POST)
-	@Secured("ADMIN")
 	public String updateUser (@PathVariable ("id") int id, ModelMap model, User user){
 		model.addAttribute("user", this.userService.getById(id));
 		model.addAttribute("mainPage", this.userService.getAll());
 		return "redirect:users/main";
 	}
 
+//	@SuppressWarnings("unchecked")
+//	private Map<UserType, List<User>> getUsersTree() {
+//		Map<UserType, List<User>> usersTree = new HashMap<>();
+//		List<UserType> userTypes = UserType.list();
+//		for (UserType type : userTypes) {
+//			usersTree.put(type, userService.findUsersByType(type));
+//		}
+//		return usersTree;
+//	}
+
 	@SuppressWarnings("unchecked")
-	private Map<UserType, List<User>> getUsersTree() {
-		Map<UserType, List<User>> usersTree = new HashMap<>();
-		List<UserType> userTypes = UserType.list();
-		for (UserType type : userTypes) {
-			usersTree.put(type, userService.findUsersByType(type));
+	private Map<UserProfile, List<User>> getUsersTree() {
+		Map<UserProfile, List<User>> usersTree = new HashMap<>();
+		List<UserProfile> userProfiles = userService.getAll();
+		for (UserProfile userProfile : userProfiles) {
+			usersTree.put(userProfile, userService.findUsersByType(userProfile));
 		}
 		return usersTree;
 	}

@@ -1,5 +1,6 @@
 package com.pvt.tracker.services;
 
+import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 
 import java.util.List;
@@ -14,7 +15,8 @@ public interface IUserService<T> extends IService<T> {
     T findByUserName(String userName);
     T findUserByLogin(String login);
     T findUserByLoginAndPassword (String login, String password);
-    List<T> findUsersByType(T tType);
+//    List<T> findUsersByType(T tType);
+    List<T> findUsersByType(UserProfile tType);
     void assignType(T user, UserType[] userType);
     void removeType (T user);
 }

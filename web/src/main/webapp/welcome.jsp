@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,8 @@
   					</h1>
         		</div>
 
-				<form class="form-horizontal" role="form" action="/signIn" modelAttribute="user" method="POST">
+				<c:url var="signInUrl" value="/signIn" />
+				<form class="form-horizontal" role="form" action="${signInUrl}" modelAttribute="user" method="POST">
         			<h3 class="form-signin-heading"><spring:message code="auth.header"/></h3>
 
         			<%--<c:if test="${not empty bad_auth}">--%>

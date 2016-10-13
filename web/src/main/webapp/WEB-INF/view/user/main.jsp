@@ -1,38 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<%--<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>--%>
-
-<link rel="stylesheet" href="/resources/css/bootstrap-combined.min.css" type="text/css">
-<script type="text/javascript" src="/resources/js/bootstrap-tree.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-combined.min.css">
+<script type="text/javascript" src="resources/js/bootstrap-tree.js"></script>
 
 <div class="page-header">
     <h3><spring:message code="user.index.page.header"/>
         <div class="pull-right">
-            <%--<security:accesscontrollist>--%>
 
-            <p:permission rule="create_user">
-                <a href="/users/create" role="button" class="btn btn-default">
-                    <img src="../../../resources/images/user.png"/> <spring:message code="user.create.user.btn"/>
-                </a>
-            </p:permission>
+            <sec:authorize access="hasRole('ADMIN')">
+                <%--<p:permission rule="create_user">--%>
+                    <a href="/users/create" role="button" class="btn btn-default">
+                        <img src="resources/images/user.png"/> <spring:message code="user.create.user.btn"/>
+                    </a>
+                <%--</p:permission>--%>
+            </sec:authorize>
 
             <c:if test="${userInfo}">
-                <p:permission rule="update_user">
+                <%--<p:permission rule="update_user">--%>
                     <a href="/users/update/${user.id}" type="button" role="button" class="btn btn-default">
-                        <img src="/resources/images/update.png"/> <spring:message code="user.update.user.btn"/>
+                        <img src="resources/images/update.png"/> <spring:message code="user.update.user.btn"/>
                     </a>
-                </p:permission>
-                <p:permission rule="delete_user">
+                <%--</p:permission>--%>
+
+                <sec:authorize access="hasRole('ADMIN')">
+                <%--<p:permission rule="delete_user">--%>
                     <a href="/users/delete/${user.id}" role="button" class="btn btn-default">
-                        <img src="/resources/images/delete.png"/> <spring:message code="user.delete.user.btn"/>
+                        <img src="resources/images/delete.png"/> <spring:message code="user.delete.user.btn"/>
                     </a>
-                </p:permission>
+                <%--</p:permission>--%>
+                </sec:authorize>
             </c:if>
 
-            <%--</security:accesscontrollist>--%>
         </div>
     </h3>
 </div>
@@ -46,7 +47,7 @@
                     <c:forEach items="${usersTree}" var="tree">
                         <ul>
                             <li>
-                                <span><img src="/resources/images/circle.png"/></span> <label class="label label-primary"> ${tree.key.name}</label>
+                                <span><img src="resources/images/circle.png"/></span> <label class="label label-primary"> ${tree.key.name}</label>
                                 <ul>
                                     <c:forEach items="${tree.value}" var="user">
                                         <li>

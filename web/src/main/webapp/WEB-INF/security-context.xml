@@ -10,14 +10,17 @@
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/home" access="permitAll"/>
         <intercept-url pattern="/admin**" access="hasRole('ADMIN')"/>
-        <form-login login-page="/welcome"
+        <form-login login-page="/welcome.jsp"
                     username-parameter="login"
                     password-parameter="password"
 
                     default-target-url="/userPage/"
+                    always-use-default-target="true"
+
                     login-processing-url="/signIn"
-                    authentication-failure-url="/access_denied"/>
-        <csrf/>
+                    authentication-failure-url="/signIn"/>
+        <logout logout-success-url="/home"/>
+        <csrf disabled="true"/>
         <session-management>
             <concurrency-control max-sessions="1" />
         </session-management>

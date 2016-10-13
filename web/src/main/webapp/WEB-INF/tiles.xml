@@ -11,7 +11,7 @@
         <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
     </definition>
 
-    <definition name="welcome" extends="default" template="/welcome.jsp">
+    <definition name="welcome" template="/welcome.jsp">
         <put-attribute name="title" value="Welcome user"/>
         <put-attribute name="body" value="/welcome.jsp"/>
     </definition>

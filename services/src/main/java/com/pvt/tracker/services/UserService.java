@@ -1,6 +1,7 @@
 package com.pvt.tracker.services;
 
 import com.pvt.tracker.beans.User;
+import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 import com.pvt.tracker.dao.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserService extends BaseService<User> implements IUserService<User>
     }
 
     @SuppressWarnings ("unchecked")
-    public List<User> findUsersByType(User userType) {
+    public List<User> findUsersByType(UserProfile userType) {
         return userDao.findUsersByType(userType);
     }
 

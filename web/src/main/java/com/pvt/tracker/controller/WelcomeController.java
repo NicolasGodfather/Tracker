@@ -27,17 +27,23 @@ import java.io.IOException;
  */
 @Controller
 @RequestMapping ("/welcome")
-public class WelcomeController {
+public class WelcomeController extends MainController {
 
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = "/signIn", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String main(ModelMap modelMap) {
+        modelMap.addAttribute("user", new User());
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public String signIn(ModelMap modelMap, @Valid @ModelAttribute ("user") User user,
                          BindingResult bindingResult, HttpSession session) {
         if (!bindingResult.hasErrors()) {
             userService.findUserByLoginAndPassword(user.getLogin(), user.getPassword());
-            return "redirect:userPage/users/main";
+            return "redirect:userPage/";
         }
         return "welcome";
     }
@@ -51,4 +57,39 @@ public class WelcomeController {
         return "redirect:welcome";
     }
 
+
+//    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
+//    public ModelAndView main(ModelMap modelMap, @Valid @ModelAttribute ("user") User user,
+//                             BindingResult bindingResult, HttpSession session) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        if (!bindingResult.hasErrors()) {
+//            modelAndView.addObject("user", new User());
+//            userService.findUserByLoginAndPassword(user.getLogin(), user.getPassword());
+//            modelAndView.setViewName("redirect:userPage/");
+//            return modelAndView;
+//        }
+//        modelAndView.setViewName("welcome");
+//        return modelAndView;
+//    }
+
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public ModelAndView main(@ModelAttribute("user") User user) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("user", new User());
+//        modelAndView.setViewName("welcome");
+//        return modelAndView;
+//    }
+//
+//    @ModelAttribute("user")
+//    public User createUser() {
+//        return new User();
+//    }
+//
+//    @RequestMapping(value = "/signIn")
+//    public ModelAndView checkUser(@ModelAttribute("user") User user) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("users/main");
+//        modelAndView.addObject("user", user);
+//        return modelAndView;
+//    }
 }
