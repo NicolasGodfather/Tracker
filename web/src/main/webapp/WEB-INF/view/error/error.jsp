@@ -19,10 +19,10 @@
 
 <br/><br/>--%>
 
-<c:if test="${errorServiceException}">
-    <i><spring:message code="error_error_message"/></i>
-</c:if>
-
-
+<%--<c:if test="${errorServiceException}">--%>
+    <%--<i><spring:message code="error_error_message"/></i>--%>
+<%--</c:if>--%>
+<body>
+<spring:message code="error.error.message"/>
 </body>
 </html>

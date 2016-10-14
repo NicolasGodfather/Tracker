@@ -15,9 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-//import com.pvt.tracker.services.IWorkflowService;
-
-// * Контроллер для работы с моделями.
 @Controller
 @RequestMapping ("/model")
 public class ModelController extends MainController {

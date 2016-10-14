@@ -4,16 +4,22 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-    <definition name="default" template="/WEB-INF/view/layouts/default2.jsp">
+    <definition name="default" template="/WEB-INF/view/layouts/default.jspx">
         <put-attribute name="body" value="/WEB-INF/view/common/body.jspx"/>
         <put-attribute name="title" value="/WEB-INF/view/common/title.jspx"/>
         <put-attribute name="header" value="/WEB-INF/view/common/header.jspx"/>
         <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
     </definition>
 
-    <definition name="welcome" template="/welcome.jsp">
+    <definition name="welcome" template="/WEB-INF/view/welcome/welcome.jspx">
         <put-attribute name="title" value="Welcome user"/>
-        <put-attribute name="body" value="/welcome.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/view/welcome/welcome.jspx"/>
+        <put-attribute name="header" value="/WEB-INF/view/common/header.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
+    </definition>
+    <definition name="login" template="/WEB-INF/view/welcome/login.jspx">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/view/welcome/login.jspx"/>
     </definition>
     <definition name="access-denied" extends="default">
         <put-attribute name="title" value="Access denied page"/>
@@ -22,7 +28,7 @@
 
     <definition name="users/main" extends="default">
         <put-attribute name="title" value="Users page"/>
-        <put-attribute name="body" value="/WEB-INF/view/user/main.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/view/user/main.jspx"/>
     </definition>
     <definition name="users/create" extends="default">
         <put-attribute name="title" value="Users page"/>
@@ -52,6 +58,11 @@
     <definition name="models/info" extends="default">
         <put-attribute name="title" value="Tasks page"/>
         <put-attribute name="body" value="/WEB-INF/view/model/task.jsp"/>
+    </definition>
+
+    <definition name="error" extends="default">
+        <put-attribute name="title" value="ERROR"/>
+        <put-attribute name="body" value="/WEB-INF/view/error/error.jsp"/>
     </definition>
 
 </tiles-definitions>

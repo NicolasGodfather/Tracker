@@ -9,22 +9,19 @@
             doctype-root-element="html" omit-xml-declaration="false"/>
 <jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
 <head>
-    <![CDATA[
-    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap/bootstrap-theme.css">
-    ]]>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap/bootstrap-theme.css"/>
 
     <tiles:insertAttribute  name="title"/>
     <c:if test="${not empty title}">
         <title><spring:message code="${title}"/></title>
     </c:if>
-
 </head>
-<div style="float: right;">
-    <a href="?locale=ru" style="padding: 5px">RU</a>
-    <a href="?locale=en" style="padding: 5px">EN</a>
-</div>
+<!--<div style="float: right;">-->
+    <!--<a href="?locale=ru" style="padding: 5px">RU</a>-->
+    <!--<a href="?locale=en" style="padding: 5px">EN</a>-->
+<!--</div>-->
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="body"/>
 <tiles:insertAttribute name="footer"/>

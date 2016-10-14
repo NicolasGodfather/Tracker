@@ -9,7 +9,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -22,7 +25,7 @@ import java.util.Map;
  * @author Nicolas Asinovich.
  */
 @Controller
-@SessionAttributes ("user")
+//@SessionAttributes ("user")
 @RequestMapping("/userPage")
 public class UserController extends MainController {
 
@@ -32,24 +35,11 @@ public class UserController extends MainController {
 
 	@RequestMapping (value = "/", method = RequestMethod.GET)
 	public String mainPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
 		model.addAttribute("usersView", true);
 		model.addAttribute("usersTree", getUsersTree());
 		return "users/main";
 	}
-/*First method on start application*/
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public ModelAndView main(@ModelAttribute ("user") User user) {
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("user", new User());
-//		modelAndView.setViewName("users/main");
-//		return modelAndView;
-//	}
-//
-//	public void index() {
-//		param("usersView", true);
-//		param("usersTree", getUsersTree());
-//		forward(pagesLocation + "layout/" + getDefaultLayout());
-//	}
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String userInfo() {

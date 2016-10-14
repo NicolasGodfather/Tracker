@@ -14,8 +14,8 @@
     <c:if test="${not empty title}">
         <title><spring:message code="${title}"/></title>
     </c:if>
-
 </head>
+
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="body"/>
 <tiles:insertAttribute name="footer"/>
