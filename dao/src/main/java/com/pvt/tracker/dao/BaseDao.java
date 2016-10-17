@@ -1,8 +1,7 @@
 package com.pvt.tracker.dao;
 
-import com.pvt.tracker.dao.exception.DAOException;
 import com.pvt.tracker.beans.BaseEntity;
-import org.hibernate.Query;
+import com.pvt.tracker.dao.exception.DAOException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Realization BaseDao
@@ -64,12 +62,12 @@ public class BaseDao<T> implements IDao<T> {
         return (T) getSession().get(BaseEntity.class, id);
     }
 
-    @SuppressWarnings("unchecked")
-    public List<T> getAll () {
-        String hql = "from T";
-        Query query = getSession().createQuery(hql);
-        return query.list();
-    }
+//    @SuppressWarnings("unchecked")
+//    public List<T> getAll () {
+//        String hql = "from T";
+//        Query query = getSession().createQuery(hql);
+//        return query.list();
+//    }
 
     public void delete (T t) {
         logger.info("Deleted:" + t);

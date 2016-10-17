@@ -11,5 +11,7 @@ import java.util.List;
  */
 public interface IModelService<T> extends IService<T> {
 
-    public List<Model> getTaskComments (Model modelType);
+    List<Model> getTaskComments (Model modelType);
+    List<Model> getAll();
+
 }

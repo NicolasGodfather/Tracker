@@ -16,6 +16,5 @@ public interface IModelDao extends IDao<Model> {
      */
     List getTaskComments(Model t);
 
-    @Override
     List<Model> getAll ();
 }

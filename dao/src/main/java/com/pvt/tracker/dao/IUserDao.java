@@ -51,6 +51,7 @@ public interface IUserDao extends IDao<User> {
      */
     void removeType (User user);
 
-    @Override
     List<User> getAll ();
+
+    List<UserProfile> getAllProfile ();
 }

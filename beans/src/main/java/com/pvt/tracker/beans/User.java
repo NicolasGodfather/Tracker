@@ -4,8 +4,10 @@ import com.pvt.tracker.beans.enums.ModelType;
 import com.pvt.tracker.beans.enums.StateType;
 import com.pvt.tracker.beans.enums.UserType;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,9 +28,13 @@ public class User extends BaseEntity {
     private String surname;
 
     @Column(name = "login")
+    @NotNull (message = "{sign_in_login_error}")
+    @NotEmpty (message = "{sign_in_login_error}")
     private String login;
 
     @Column(name = "password")
+    @NotNull(message = "{sign_in_password_error}")
+    @NotEmpty(message = "{sign_in_password_error}")
     private String password;
 
     @Column(name = "email")

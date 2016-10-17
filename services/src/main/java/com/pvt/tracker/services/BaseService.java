@@ -41,8 +41,4 @@ public abstract class BaseService<T> implements IService<T> {
     public T getById (Serializable id) {
         return dao.get(id);
     }
-
-    public List<T> getAll () {
-        return dao.getAll();
-    }
 }

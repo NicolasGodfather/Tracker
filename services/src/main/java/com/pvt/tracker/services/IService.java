@@ -1,7 +1,6 @@
 package com.pvt.tracker.services;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Realization
@@ -14,5 +13,4 @@ public interface IService<T> {
     void update(T t);
     void delete(T t);
     T getById(Serializable id);
-    List<T> getAll();
 }

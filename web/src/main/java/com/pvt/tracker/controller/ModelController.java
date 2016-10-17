@@ -17,7 +17,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping ("/model")
-public class ModelController extends MainController {
+public class ModelController{
 
 	@Autowired
 	private IUserService userService;

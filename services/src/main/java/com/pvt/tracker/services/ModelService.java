@@ -25,4 +25,9 @@ public class ModelService extends BaseService<Model> implements IModelService<Mo
     public List<Model> getTaskComments (Model modelType) {
         return modelDao.getTaskComments(modelType);
     }
+
+    @Override
+    public List<Model> getAll () {
+        return modelDao.getAll();
+    }
 }

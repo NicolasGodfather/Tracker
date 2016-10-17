@@ -45,6 +45,14 @@ public class UserDao extends BaseDao<User> implements IUserDao {
         return query.list();
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<UserProfile> getAllProfile () {
+        hql = "from UserProfile";
+        query = getSession().createQuery(hql);
+        return query.list();
+    }
+
     @SuppressWarnings("unchecked")
     public User findUserByLogPass(String login, String password) {
         try {

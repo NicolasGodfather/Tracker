@@ -1,7 +1,6 @@
 package com.pvt.tracker.dao;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Realization abstract dao layer
@@ -13,7 +12,7 @@ public interface IDao<T>{
 
     T create(T t);
     T get(Serializable id);
-    List<T> getAll();
+//    List<T> getAll();
     void update(T t);
     void delete(T t);
 }
