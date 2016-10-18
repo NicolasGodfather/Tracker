@@ -1,7 +1,6 @@
 package com.pvt.tracker.dao;
 
 import com.pvt.tracker.beans.User;
-import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 import com.pvt.tracker.dao.exception.DAOException;
 import org.hibernate.Criteria;
@@ -47,11 +46,42 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<UserProfile> getAllProfile () {
-        hql = "from UserProfile";
+    public List<UserType> getAllType () {
+//        hql = "from User where userType=?";
+        hql = "select userType from User where userType=:userType";
         query = getSession().createQuery(hql);
         return query.list();
     }
+
+    //    @SuppressWarnings("unchecked")
+//    public List<User> findUsersByType(User userType) {
+//        try {
+//            hql = "FROM User WHERE userProfiles=?";
+//            query = getSession().createQuery(hql);
+//            query.setParameter(0, userType);
+//            return query.list();
+//        } catch (HibernateException e) {
+//            throw new DAOException(ERROR_MESSAGE + "in method 'findUserByType'", e);
+//        }
+//    }
+//    @SuppressWarnings("unchecked")
+//    public List<User> findUsersByType(User userType) {
+//        return getCriteria().add(Restrictions.disjunction().
+//                add(Restrictions.or(Restrictions.like("userType", userType + "%")))).list();
+    public void assignType (User user, UserType userType) {
+        try {
+            hql = "INSERT INTO User (userType)" + "select userType from User where id=:id";
+            query = getSession().createQuery(hql);
+            query.setParameter("id", user);
+            query.setParameter("id", userType);
+        } catch (HibernateException e) {
+            throw new DAOException(ERROR_MESSAGE + "in method 'assignType'", e);
+        }
+    }
+//
+//    public void assignRole(User user, Role role) {
+//        execute("INSERT INTO users_roles (user_id, role_id) VALUES (" + user.getId() + ", " + role.getId() + ")");
+//    }
 
     @SuppressWarnings("unchecked")
     public User findUserByLogPass(String login, String password) {
@@ -75,26 +105,14 @@ public class UserDao extends BaseDao<User> implements IUserDao {
     public User findUserByLogin(String login) {
         return (User) getCriteria().add(Restrictions.eq("login", login)).uniqueResult();
     }
-
-//    @SuppressWarnings("unchecked")
+    //    @SuppressWarnings("unchecked")
 //    public User findUserByLogPass(String login, String password) {
 //        return (User) getCriteria().add(Restrictions.disjunction().
 //                add(Restrictions.or(Restrictions.like("login", login + "%"),
 //                        Restrictions.like("password", password + "%"))));
 //    }
     @SuppressWarnings("unchecked")
-    public List<User> findUsersByType(UserProfile userType) {
-        try {
-            hql = "FROM User WHERE userProfiles=?";
-            query = getSession().createQuery(hql);
-            query.setParameter(0, userType);
-            return query.list();
-        } catch (HibernateException e) {
-            throw new DAOException(ERROR_MESSAGE + "in method 'findUserByType'", e);
-        }
-    }
-//    @SuppressWarnings("unchecked")
-//    public List<User> findUsersByType(User userType) {
+//    public List<User> findUsersByType(UserProfile userType) {
 //        try {
 //            hql = "FROM User WHERE userProfiles=?";
 //            query = getSession().createQuery(hql);
@@ -104,14 +122,21 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 //            throw new DAOException(ERROR_MESSAGE + "in method 'findUserByType'", e);
 //        }
 //    }
-//    @SuppressWarnings("unchecked")
-//    public List<User> findUsersByType(User userType) {
-//        return getCriteria().add(Restrictions.disjunction().
-//                add(Restrictions.or(Restrictions.like("userType", userType + "%")))).list();
-//    }
 
-    public void assignType (User user, UserType[] userType) {
+
+    @Override
+    public List<User> findUsersByType (UserType userType) {
+        try {
+            hql = "FROM User WHERE userType=?";
+            query = getSession().createQuery(hql);
+            query.setParameter(0, userType);
+            return query.list();
+        } catch (HibernateException e) {
+            throw new DAOException(ERROR_MESSAGE + "in method 'findUserByType'", e);
+        }
     }
+
+//    }
 
     public void removeType (User user) {
     }

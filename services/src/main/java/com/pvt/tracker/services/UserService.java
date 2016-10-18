@@ -1,7 +1,6 @@
 package com.pvt.tracker.services;
 
 import com.pvt.tracker.beans.User;
-import com.pvt.tracker.beans.UserProfile;
 import com.pvt.tracker.beans.enums.UserType;
 import com.pvt.tracker.dao.IUserDao;
 import com.pvt.tracker.dao.exception.DAOException;
@@ -43,10 +42,15 @@ public class UserService extends BaseService<User> implements IUserService {
         }
     }
 
-    @SuppressWarnings ("unchecked")
-    public List<User> findUsersByType(UserProfile userType) {
+    @Override
+    public List<User> findUsersByType (UserType userType) {
         return userDao.findUsersByType(userType);
     }
+
+//    @SuppressWarnings ("unchecked")
+//    public List<User> findUsersByType(UserProfile userType) {
+//        return userDao.findUsersByType(userType);
+//    }
 
     @SuppressWarnings ("unchecked")
     public void removeType (User user) {
@@ -59,11 +63,27 @@ public class UserService extends BaseService<User> implements IUserService {
     }
 
     @Override
-    public List<UserProfile> getAllProfile () throws ServiceException {
+    public List<UserType> getAllType () throws ServiceException {
         try{
-            return userDao.getAllProfile();
+            return userDao.getAllType();
         } catch (DAOException | HibernateException e) {
             throw new ServiceException("Error while transaction of getAllUsers");
+        }
+    }
+
+    @Override
+    public User createUser (String login, String password, String name, String surname, String email) throws ServiceException {
+        try {
+            User user = new User();
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setName(name);
+            user.setSurname(surname);
+            user.setEmail(email);
+            userDao.create(user);
+            return user;
+        } catch (DAOException | HibernateException e) {
+            throw new ServiceException("Error while transaction of createUser");
         }
     }
 
@@ -72,7 +92,7 @@ public class UserService extends BaseService<User> implements IUserService {
     }
 
     @SuppressWarnings ("unchecked")
-    public void assignType (User user, UserType[] userType) {
+    public void assignType (User user, UserType userType) {
         userDao.assignType(user, userType);
     }
 }

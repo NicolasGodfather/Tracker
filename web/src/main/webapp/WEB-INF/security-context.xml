@@ -8,64 +8,35 @@
 
     <http auto-config="true">
         <intercept-url pattern="/" access="permitAll"/>
-        <intercept-url pattern="/home" access="permitAll"/>
         <intercept-url pattern="/adminPage/**" access="hasRole('ADMIN')"/>
-        <intercept-url pattern="/userPage/**" access="hasRole('USER')"/>
         <form-login login-page="/welcome"
                     username-parameter="login"
                     password-parameter="password"
                     login-processing-url="/signIn"
                     authentication-failure-url="/signIn"
-
-                    default-target-url="/userPage/"
+                    default-target-url="/user/"
                     always-use-default-target="true"/>
 
         <logout logout-success-url="/welcome"/>
-        <!--<anonymous username="guest" granted-authority="ANONYMOUS" />-->
         <csrf disabled="true"/>
         <session-management>
             <concurrency-control max-sessions="1" />
         </session-management>
     </http>
 
-    <!--<authentication-manager>-->
-        <!--&lt;!&ndash;<authentication-provider user-service-ref="authService"/>&ndash;&gt;-->
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="jdbcUserService"/>
+
         <!--<authentication-provider>-->
             <!--<user-service>-->
             <!--<user name="root" password="root" authorities="ADMIN"/>-->
             <!--</user-service>-->
         <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
-
-    <!--<beans:bean id="authService" class="com.pvt.tracker.controller.AuthenticationService"/>-->
-
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="jdbcUserService"/>
     </authentication-manager>
 
     <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
                        users-by-username-query="SELECT t_user.login, t_user.password, ENABLED FROM t_user WHERE t_user.login=?"
-                       authorities-by-username-query="SELECT t_user.login, t_userprofile.type FROM registration WHERE t_user.login=?"/>
-
-    <!--<jdbc-user-service data-source-ref="dataSource"-->
-    <!--id="jdbcUserService"-->
-    <!--users-by-username-query="SELECT t_user.login, t_user.password, TRUE FROM registration WHERE t_user.login=?"-->
-    <!--authorities-by-username-query="SELECT t_user.login, users_user_profile.user_profile_id FROM registration WHERE t_user.login=?"/>-->
-
-    <!--<authentication-manager>-->
-        <!--<authentication-provider>-->
-            <!--<jdbc-user-service data-source-ref="dataSource"-->
-                               <!--id="jdbcUserDetailsManager"-->
-                               <!--users-by-username-query="SELECT t_user.login, t_user.password, TRUE FROM registration WHERE t_user.login=?"-->
-                               <!--authorities-by-username-query="SELECT t_user.login, users_user_profile.user_profile_id FROM registration WHERE t_user.login=?"/>-->
-        <!--</authentication-provider>-->
-
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-            <!--<user name="root" password="root" authorities="ADMIN"/>-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
+                       authorities-by-username-query="SELECT t_user.login, t_user.user_type FROM registration WHERE t_user.login=?"/>
 
 </beans:beans>
 

@@ -25,7 +25,7 @@ public class ModelController{
 	private IModelService modelService;
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping (value = "/models/main", method = RequestMethod.GET)
+	@RequestMapping (value = "/main", method = RequestMethod.GET)
 	public String mainPage(ModelMap model) {
 		getModelsTree(modelService.getAll());
 		return "models/main";

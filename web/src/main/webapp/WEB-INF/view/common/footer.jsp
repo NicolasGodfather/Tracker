@@ -1,8 +1,6 @@
-<jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page"
-          xmlns:spring="http://www.springframework.org/tags"
-          version="2.0">
-    <footer class="newFooter">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<footer class="newFooter">
         <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -13,7 +11,6 @@
             </div>
         </nav>
     </footer>
-</jsp:root>
 
 
 

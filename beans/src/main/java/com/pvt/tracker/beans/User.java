@@ -1,7 +1,6 @@
 package com.pvt.tracker.beans;
 
 import com.pvt.tracker.beans.enums.ModelType;
-import com.pvt.tracker.beans.enums.StateType;
 import com.pvt.tracker.beans.enums.UserType;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -40,20 +39,42 @@ public class User extends BaseEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name="state", nullable=false)
-    private String state= StateType.ACTIVE.getState();
+    @Enumerated
+    @Column(name = "user_type")
+    private UserType userType;
+
+//    private String types = UserType.valueOf();
+
+//    @Column(name="state", nullable=false)
+//    private String state= StateType.ACTIVE.getState();
 
     @ManyToMany
     @JoinColumn(name = "id")
     private List<Model> models;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_user_profile",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
-    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "users_user_profile",
+//            joinColumns = { @JoinColumn(name = "user_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "user_profile_id") })
+//    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 
     public User () {
+    }
+
+    public User (String login, String password, String name, String surname, String email) {
+        this.login = login;
+        this.password = password;
+        super.setName(name);
+        this.surname = surname;
+        this.email = email;
+    }
+
+    public UserType getUserType () {
+        return userType;
+    }
+
+    public void setUserType (UserType userType) {
+        this.userType = userType;
     }
 
     public String getEmail () {
@@ -79,14 +100,14 @@ public class User extends BaseEntity {
     public void setPassword (String password) {
         this.password = password;
     }
-
-    public String getState () {
-        return state;
-    }
-
-    public void setState (String state) {
-        this.state = state;
-    }
+//
+//    public String getState () {
+//        return state;
+//    }
+//
+//    public void setState (String state) {
+//        this.state = state;
+//    }
 
     public String getSurname () {
         return surname;
@@ -104,12 +125,12 @@ public class User extends BaseEntity {
         this.models = models;
     }
 
-    public Set<UserProfile> getUserProfiles () {
-        return userProfiles;
-    }
-
-    public void setUserProfiles (Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
-    }
+//    public Set<UserProfile> getUserProfiles () {
+//        return userProfiles;
+//    }
+//
+//    public void setUserProfiles (Set<UserProfile> userProfiles) {
+//        this.userProfiles = userProfiles;
+//    }
 
 }

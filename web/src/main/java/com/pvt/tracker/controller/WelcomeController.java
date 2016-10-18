@@ -46,7 +46,7 @@ public class WelcomeController{
                          BindingResult bindingResult, HttpSession session) {
         if (!bindingResult.hasErrors()) {
             userService.findUserByLoginAndPassword(user.getLogin(), user.getPassword());
-            return "redirect:userPage/";
+            return "redirect:/user/main";
         }
         return "welcome";
     }
@@ -59,5 +59,20 @@ public class WelcomeController{
         }
         return "redirect:welcome";
     }
+
+//    @RequestMapping(value = "/access_denied", method = RequestMethod.GET)
+//	public String accessDeniedPage(ModelMap model) {
+//		model.addAttribute("user", getPrincipal());
+//		return "access-denied";
+//	}
+//
+//	@RequestMapping(value="/logout", method = RequestMethod.GET)
+//	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		if (auth != null){
+//			new SecurityContextLogoutHandler().logout(request, response, auth);
+//		}
+//		return "redirect:/login?logout";
+//	}
 
 }

@@ -6,17 +6,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="resources/css/dashboard.css" type="text/css">
-    <link rel="stylesheet" href="resources/css/bootstrap/bootstrap-theme.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap/bootstrap-theme.css"/>
 
     <tiles:insertAttribute  name="title"/>
     <c:if test="${not empty title}">
         <title><spring:message code="${title}"/></title>
     </c:if>
 </head>
+<body>
 
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="body"/>
 <tiles:insertAttribute name="footer"/>
+
+</body>
 </html>
